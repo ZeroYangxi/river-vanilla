@@ -7,7 +7,7 @@
 
 .backgroundImage {
   width: 100%;
-  /* filter: brightness(200%); */
+  filter: brightness(30%);
 }
 
 body {
