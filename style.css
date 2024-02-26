@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.backgroundImage {
+  width: 100%;
+  /* filter: brightness(200%); */
+}
+
+body {
+  background: black;
+}
+
+.header {
+  /* background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(50px); */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.navBar {
+  background-color: palevioletred;
+}
+
+.logo {
+  font-size: 2rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.navBar a {
+  font-size: 1.15rem;
+  color: aqua;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 2.5rem;
+  margin-right: 0.5rem;
+}
+
+.icons {
+  position: absolute;
+  right: 3%;
+  size: 2.5rem;
+  cursor: pointer;
+  display: none;
+}
+
+/* Media Query */
+@media (max-width: 992px) {
+  .header {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .icons {
+    display: inline-flex;
+  }
+  #closeIcon {
+    display: none;
+  }
+
+  .navBar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 16rem;
+    background: rgba(204, 122, 122, 0.2);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 1rem 1rem rgb(0, 0, 0, 0.5);
+  }
+  .navBar a {
+    display: block;
+    font-size: 1.1rem;
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+}
