@@ -28,9 +28,9 @@ body {
   z-index: 100;
 }
 
-.navBar {
+/* .navBar {
   background-color: palevioletred;
-}
+} */
 
 .logo {
   font-size: 2rem;
@@ -41,11 +41,17 @@ body {
 
 .navBar a {
   font-size: 1.15rem;
-  color: aqua;
+  text-shadow: 1px 1px 2px pink;
+  font-style: oblique;
+  font-weight: 300;
+  color: white;
   text-decoration: none;
-  font-weight: 500;
   margin-left: 2.5rem;
   margin-right: 0.5rem;
+}
+
+.navBar a:hover {
+  text-shadow: 3px;
 }
 
 .icons {
@@ -53,38 +59,64 @@ body {
   right: 3%;
   size: 2.5rem;
   cursor: pointer;
-  display: none;
 }
 
 /* Media Query */
-@media (max-width: 992px) {
+@media (min-width: 992px) {
   .header {
     padding: 1rem;
+  }
+
+  .icons {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .icons {
+    display: none;
   }
 }
 
 @media (max-width: 768px) {
-  .icons {
-    display: inline-flex;
+  /* menu bar icon换 */
+  #menuIcon {
+    display: block;
   }
+
   #closeIcon {
     display: none;
   }
 
+  #closeIcon.active {
+    display: block;
+  }
+
+  #menuIcon.active {
+    display: none;
+  }
+
   .navBar {
+    display: none;
+  }
+
+  /* 当屏幕尺寸较小时nav bar变成需要展开的 */
+  .navBar.active {
+    display: flex;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    height: 16rem;
+    height: 13rem;
     background: rgba(204, 122, 122, 0.2);
     backdrop-filter: blur(6px);
     box-shadow: 0 1rem 1rem rgb(0, 0, 0, 0.5);
   }
+
   .navBar a {
     display: block;
     font-size: 1.1rem;
-    margin: 1.5rem 0;
+    margin: 1.5rem 1.5rem;
     text-align: center;
   }
 }

@@ -1,3 +1,24 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const menuIcon = document.getElementById("menuIcon");
+  const closeIcon = document.getElementById("closeIcon");
+  const navBar = document.querySelector(".navBar");
+
+  // 当点击menuIcon时，active.
+  menuIcon.addEventListener("click", function () {
+    navBar.classList.add("active");
+    menuIcon.classList.add("active");
+    closeIcon.classList.add("active");
+    console.log(navBar.classList);
+  });
+
+  closeIcon.addEventListener("click", function () {
+    navBar.classList.remove("active");
+    menuIcon.classList.remove("active");
+    closeIcon.classList.remove("active");
+  });
+});
+
+// 以下为canvas动画的implementation
 window.addEventListener("load", function () {
   // after loaded
   const canvas = document.getElementById("canvas1");
@@ -103,7 +124,7 @@ window.addEventListener("load", function () {
         x: undefined,
         y: undefined,
       };
-      window.addEventListener("mousemove", (event) => {
+      canvas.addEventListener("mousemove", (event) => {
         this.mouse.x = event.x;
         this.mouse.y = event.y;
       });
@@ -159,5 +180,5 @@ window.addEventListener("load", function () {
   //   console.log("clicked");
   // });
 
-  animate();
+  // animate();
 });
