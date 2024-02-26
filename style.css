@@ -21,7 +21,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.3rem;
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -61,12 +61,17 @@ body {
   cursor: pointer;
 }
 
+/* Projects Page */
+#projects {
+  background-image: url("monet.webp");
+  background-size: cover; /* 使背景图像覆盖整个元素 */
+  background-position: center; /* 居中显示背景图像 */
+  color: white; /* 设置文本颜色为白色，以确保文本能够清晰显示在背景图像上 */
+  padding: 50px; /* 添加内边距，以确保内容不会太靠近边缘 */
+}
+
 /* Media Query */
 @media (min-width: 992px) {
-  .header {
-    padding: 1rem;
-  }
-
   .icons {
     display: none;
   }
