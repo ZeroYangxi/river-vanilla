@@ -4,8 +4,9 @@ window.addEventListener("load", function () {
   const canvas = document.getElementById("canvas1");
   const context = canvas.getContext("2d");
 
-  canvas.width = 500;
-  canvas.height = 500;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  console.log(window.innerHeight);
 
   // individual particles
   class Particle {
@@ -22,9 +23,9 @@ window.addEventListener("load", function () {
       // Math.random() * 2 - 1;
       this.velocityY = 0;
       // 随靠近终点逐渐减小速度的easing factor
-      this.ease = Math.random() * 0.5; // easing factor, the particles speed to go back to the image
+      this.ease = Math.random() * 0.06; // easing factor, the particles speed to go back to the image
       // 随时间推移逐渐减小速度的fraction
-      this.friction = 0.5; // 介于0（完全的摩擦，立即停止）和1（无摩擦，不减速）之间
+      this.friction = 0.2; // 介于0（完全的摩擦，立即停止）和1（无摩擦，不减速）之间
       // mouse move implementation
       // distance: cursor between particles
       this.distanceX = 0;
@@ -48,7 +49,7 @@ window.addEventListener("load", function () {
         this.distanceX * this.distanceX + this.distanceY * this.distanceY;
       // particles push harder when near mouse
       // 去掉除以0的错误，同时让力变大
-      const forceMultiplier = 100; // 增加鼠标影响力
+      const forceMultiplier = 2000; // 增加鼠标影响力
       if (this.distance === 0) {
         this.force = -this.effect.mouse.radius * forceMultiplier;
       } else {
@@ -160,5 +161,19 @@ window.addEventListener("load", function () {
   //   console.log("clicked");
   // });
 
-  // animate();
+  // function resize_canvas() {
+  //   canvas = document.getElementById("canvas");
+  //   if (canvas.width < window.innerWidth) {
+  //     canvas.width === window.innerWidth;
+  //     animate();
+  //   }
+
+  //   if (canvas.height < window.innerHeight) {
+  //     canvas.height === window.innerHeight;
+  //     animate();
+  //   }
+  // }
+
+  animate();
+  // resize_canvas();
 });
