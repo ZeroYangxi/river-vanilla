@@ -5,6 +5,43 @@
   font-family: "Courier New", Courier, monospace;
 }
 
+.canvas-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+#canvas1 {
+  position: absolute;
+  top: 0;
+  left: 3%;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 43vh;
+  left: 55%; /* Shift right from center */
+  transform: translateX(-40%); /* This keeps the text itself centered */
+  width: 100%;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  z-index: 1;
+}
+
+.category {
+  position: relative;
+  position: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+}
+
 .backgroundImage {
   width: 100%;
   filter: brightness(30%);
