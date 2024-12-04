@@ -29,9 +29,19 @@ body {
 /* Card Container */
 .card-container {
   perspective: 700px;
-  width: min(300px, 90vw);
-  height: min(420px, 126vw);
+  width: 50vh;
+  height: auto; /* height will adjust automatically to maintain the aspect ratio */
+  aspect-ratio: 5 / 7;
+  /* width: min(300px, 90vw);
+  height: min(420px, 126vw); */
   flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    width: 300px;
+    height: 420px;
+  }
 }
 
 /* Pokemon Card Base */
@@ -72,7 +82,7 @@ body {
 /* Card Frame */
 .card-frame {
   position: absolute;
-  inset: 8px;
+  inset: 14px;
   background: linear-gradient(135deg, #f8f8f8, #e8e8e8);
   border-radius: 12px;
   z-index: 2;
@@ -84,16 +94,17 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 16px;
+  /* padding: 8px 16px; */
+  padding: 2.5% 2%;
   background: linear-gradient(90deg, #f0f0f0, #e0e0e0);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .basic-tag {
-  font-size: clamp(10px, 2.5vw, 12px);
+  font-size: clamp(10px, 3vw, 24px);
   color: #666;
   font-weight: bold;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   letter-spacing: 0.5px;
 }
 
@@ -109,7 +120,7 @@ body {
 /* Profile Container */
 .profile-container {
   width: 90%;
-  height: 180px;
+  height: 55%;
   margin: 10px auto;
   background: linear-gradient(135deg, #e6f3ff, #c8e6ff);
   border-radius: 8px;
