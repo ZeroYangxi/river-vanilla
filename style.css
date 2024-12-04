@@ -9,14 +9,16 @@
   position: relative;
   width: 100%;
   height: 100vh;
+  overflow: hidden;
 }
 
 #canvas1 {
   position: absolute;
   top: 0;
-  left: 3%;
+  left: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .overlay {
@@ -54,41 +56,49 @@ body {
 .header {
   /* background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(50px); */
+  background-color: rgba(0, 0, 0, 0.14);
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   padding: 1rem;
+  padding-top: 2vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 100;
 }
 
-/* .navBar {
-  background-color: palevioletred;
-} */
+.navBar {
+  background-color: rgba(0, 0, 0, 0.01);
+  display: flex;
+  flex: 1; /* Allow it to take remaining space */
+  justify-content: space-around; /* Distribute links evenly */
+  align-items: center;
+}
 
 .logo {
   font-size: 2rem;
   color: #2affff;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .navBar a {
-  font-size: 1.15rem;
-  text-shadow: 1px 1px 2px pink;
+  font-size: 2rem;
+  text-shadow: 1px 1px 2px #2affff;
   font-style: oblique;
   font-weight: 300;
-  color: #2affff;
+  color: white;
+  /* color: #2affff; */
   text-decoration: none;
   margin-left: 2.5rem;
   margin-right: 0.5rem;
 }
 
 .navBar a:hover {
-  text-shadow: 3px;
+  color: #2affff;
+  text-shadow: 3px 3px 4px #2affff;
 }
 
 .icons {
@@ -100,14 +110,14 @@ body {
 
 /* Projects Page */
 #projects {
-  max-width: 1500px;
+  /* max-width: 1500px; */
   margin: 0 auto; /* 居中显示 */
-  padding: 20px;
-  background-image: url("monet.webp");
+  /* background-image: url("monet.webp"); */
   background-size: cover; /* 使背景图像覆盖整个元素 */
   background-position: center; /* 居中显示背景图像 */
   color: white; /* 设置文本颜色为白色 */
-  padding: 40px; /* 添加内边距，以确保内容不会太靠近边缘 */
+  padding-left: 4vw; /* 添加内边距，以确保内容不会太靠近边缘 */
+  padding-right: 4vw;
 }
 
 .project-gallery {
@@ -119,11 +129,14 @@ body {
 
 /* 单个项目项的样式 */
 .project-item {
+  font-size: 4vh;
   flex: 1 1 180px; /* 让项目项能够伸缩，基础宽度为180px */
   display: flex;
   flex-direction: column; /* 使图片和文本垂直排列 */
   align-items: start; /* 在交叉轴上居中对齐内容 */
-  text-align: center; /* 文本居中 */
+  justify-content: flex-start;
+  text-align: left; /* 文本居中 */
+  margin-bottom: 40px;
 }
 
 .project-item img {
@@ -174,8 +187,8 @@ body {
     top: 100%;
     left: 0;
     width: 100%;
-    height: 13rem;
-    background: rgba(204, 122, 122, 0.2);
+    height: 4rem;
+    background: rgba(0, 0, 0, 0.316);
     backdrop-filter: blur(6px);
     box-shadow: 0 1rem 1rem rgb(0, 0, 0, 0.5);
   }

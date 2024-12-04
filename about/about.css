@@ -28,7 +28,7 @@ body {
 
 /* Card Container */
 .card-container {
-  perspective: 1000px;
+  perspective: 700px;
   width: min(300px, 90vw);
   height: min(420px, 126vw);
   flex-shrink: 0;
@@ -77,22 +77,6 @@ body {
   border-radius: 12px;
   z-index: 2;
   overflow: hidden;
-}
-
-/* Metallic Overlay */
-.metallic-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.4) 45%,
-    rgba(255, 255, 255, 0.1) 55%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  transform: translateZ(0);
 }
 
 /* Card Header */
@@ -183,14 +167,14 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.8);
 }
 
-/* Shine Effects */
+/* Shine Effects 基础光泽感 */
 .shine-effect {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     calc(var(--moveX) * 1deg),
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.5) 50%,
+    rgba(222, 255, 245, 0) 0%,
+    rgba(255, 255, 255, 0.7) 50%,
     rgba(255, 255, 255, 0) 100%
   );
   z-index: 5;
@@ -201,13 +185,14 @@ body {
   transition: background 0.1s ease-out;
 }
 
-.energy-overlay {
+/* Shine Effects 基础反光效果，就像光线掠过卡片表面时产生的白色光泽 */
+/* .energy-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     calc(var(--moveX) * 1deg),
     rgba(135, 206, 235, 0) 0%,
-    rgba(135, 206, 235, 0.5) calc(var(--moveY) * 1%),
+    rgba(135, 206, 235, 0.2) calc(var(--moveY) * 1%),
     rgba(135, 206, 235, 0) 100%
   );
   pointer-events: none;
@@ -216,17 +201,18 @@ body {
   transform: translateZ(0);
   will-change: transform, background;
   transition: background 0.1s ease-out;
-}
+} */
 
+/* 全息彩虹效果 */
 .rainbow-shine {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     calc(var(--moveX) * 1.5deg),
     transparent 0%,
-    rgba(255, 150, 227, 0.2) calc(var(--moveY) - 30%),
-    rgba(136, 209, 255, 0.3) calc(var(--moveY)),
-    rgba(255, 150, 227, 0.2) calc(var(--moveY) + 30%),
+    rgba(255, 150, 227, 0.4) calc(var(--moveY) - 30%),
+    rgba(136, 209, 255, 0.6) calc(var(--moveY)),
+    rgba(255, 150, 227, 0.4) calc(var(--moveY) + 30%),
     transparent 100%
   );
   z-index: 6;
