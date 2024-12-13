@@ -5,6 +5,7 @@
   font-family: "Cormorant Garamond", serif;
 }
 
+/* Canvas and Overlay */
 .canvas-container {
   position: relative;
   width: 100%;
@@ -21,27 +22,39 @@
   object-fit: cover;
 }
 
+/* Overlay Container */
 .overlay {
   position: absolute;
   bottom: 35vh;
-  left: 55%; /* Shift right from center */
-  transform: translateX(-40%); /* This keeps the text itself centered */
-  width: 100%;
+  right: 10%; /* Changed from left to right positioning */
+  transform: none; /* Remove the translateX since we're using right alignment */
+  width: auto; /* Changed from 100% to auto to prevent full-width */
   color: white;
-  text-shadow: 2px 2px 3px white;
-  font-size: 24px;
-  text-align: center;
+  text-align: right; /* Changed from center to right */
   z-index: 1;
 }
 
-.overlay .secondary-text {
-  font-size: 20px;
+/* Prevent text wrapping for all paragraphs in overlay */
+.overlay p {
+  white-space: nowrap;
+}
+
+/* Primary Text */
+.overlay p:first-child {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  text-shadow: 2px 2px 3px white;
+  margin-bottom: 0.5rem;
+}
+
+/* Secondary Text */
+.overlay p:last-child {
+  font-size: clamp(1rem, 2vw, 1.2rem);
   text-shadow: 2px 1px 3px rgba(255, 255, 255, 0.9);
 }
 
 .category {
   position: relative;
-  position: flex;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
@@ -59,9 +72,8 @@ body {
   background: black;
 }
 
+/* Header and Navigation */
 .header {
-  /* background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(50px); */
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -77,8 +89,8 @@ body {
 
 .navBar {
   display: flex;
-  flex: 1; /* Allow it to take remaining space */
-  justify-content: space-around; /* Distribute links evenly */
+  flex: 1;
+  justify-content: space-around;
   align-items: center;
   z-index: 1;
 }
@@ -91,15 +103,15 @@ body {
 }
 
 .navBar a {
-  font-size: clamp(1.2rem, 1.8vw, 1.6rem); /* 18px to 28.8px */
+  font-size: clamp(1.125rem, 2vw, 1.8rem);
   font-weight: 300;
   font-style: italic;
   color: white;
-  text-shadow: 2px 3px 2px #2affff7e;
-  /* color: #2affff; */
+  text-shadow: 2px 3px 2px rgba(42, 255, 255, 0.5);
   text-decoration: none;
   margin-left: 2.5rem;
   margin-right: 0.5rem;
+  transition: all 0.3s ease;
 }
 
 .navBar a:hover {
@@ -110,53 +122,54 @@ body {
 .icons {
   position: absolute;
   right: 3%;
-  size: 2.5rem;
   cursor: pointer;
 }
 
-/* Projects Page */
+.icons img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Projects Section */
 #projects {
-  /* max-width: 1500px; */
-  margin: 0 auto; /* 居中显示 */
-  /* background-image: url("monet.webp"); */
-  background-size: cover; /* 使背景图像覆盖整个元素 */
-  background-position: center; /* 居中显示背景图像 */
-  color: white; /* 设置文本颜色为白色 */
-  padding-left: 4vw; /* 添加内边距，以确保内容不会太靠近边缘 */
+  margin: 0 auto;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding-left: 4vw;
   padding-right: 4vw;
 }
 
 .project-gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* 项目之间的间距 */
-  justify-content: center; /* 在主轴上居中对齐项目 */
+  gap: 20px;
+  justify-content: center;
 }
 
-/* 单个项目项的样式 */
 .project-item {
   font-size: 4vh;
-  flex: 1 1 180px; /* 让项目项能够伸缩，基础宽度为180px */
+  flex: 1 1 180px;
   display: flex;
-  flex-direction: column; /* 使图片和文本垂直排列 */
-  align-items: start; /* 在交叉轴上居中对齐内容 */
+  flex-direction: column;
+  align-items: start;
   justify-content: flex-start;
-  text-align: left; /* 文本居中 */
+  text-align: left;
   margin-bottom: 40px;
   padding-left: 1vw;
   text-shadow: 1px 1px 2px #2affff;
+  transition: all 0.3s ease;
 }
 
 .project-item:hover {
   background-color: #2affff;
   color: black;
-  /* text-shadow: 1px 1px 3px #0000007e; */
 }
 
 .project-item img {
-  width: 100%; /* 使图片宽度填满容器 */
-  max-width: 200px; /* 限制图片的最大宽度 */
-  height: auto; /* 保持图片的原始比例 */
+  width: 100%;
+  max-width: 200px;
+  height: auto;
 }
 
 .footer {
@@ -169,7 +182,7 @@ body {
   margin-top: 4vh;
 }
 
-/* Media Query */
+/* Responsive Design */
 @media (min-width: 992px) {
   .icons {
     display: none;
@@ -183,7 +196,10 @@ body {
 }
 
 @media (max-width: 768px) {
-  /* menu bar icon换 */
+  /* #canvas1 {
+    display: none;
+  } */
+
   #menuIcon {
     display: block;
   }
@@ -204,26 +220,41 @@ body {
     display: none;
   }
 
-  /* 当屏幕尺寸较小时nav bar变成需要展开的 */
   .navBar.active {
     display: flex;
+    flex-direction: column;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    height: auto;
     padding: 1rem 0;
-    background: rgba(0, 0, 0, 0.9);
+    /* background: rgba(0, 0, 0, 0.5); */
     backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
   }
 
-  .navBar a {
+  .navBar.active a {
     display: block;
-    font-size: clamp(1.25rem, 4vw, 1.5rem); /* 20px to 24px */
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
     margin: 0.75rem 0;
     padding: 0.5rem 0;
     width: 100%;
-    margin: 1.5rem 1.5rem;
     text-align: center;
+  }
+
+  .overlay {
+    bottom: 30vh;
+    right: 5%;
+  }
+
+  .overlay p:first-child {
+    font-size: clamp(1.1rem, 2.5vw, 1.2rem);
+  }
+  .overlay p:last-child {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+  }
+
+  .project-item {
+    font-size: clamp(1rem, 3vh, 1.5rem);
   }
 }
