@@ -196,10 +196,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  /* #canvas1 {
-    display: none;
-  } */
-
   #menuIcon {
     display: block;
   }
@@ -243,8 +239,9 @@ body {
   }
 
   .overlay {
-    bottom: 30vh;
+    bottom: 40vh;
     right: 5%;
+    line-height: 0.8em;
   }
 
   .overlay p:first-child {
