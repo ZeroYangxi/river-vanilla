@@ -106,3 +106,24 @@ document.addEventListener("DOMContentLoaded", () => {
     card.removeEventListener("touchcancel", handleTouchEnd);
   };
 });
+
+// Get all accordion buttons
+document.addEventListener("DOMContentLoaded", function () {
+  const accordionButtons = document.querySelectorAll(".accordion-button");
+
+  accordionButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const content = button.nextElementSibling;
+
+      // Toggle active state for button (controls icon rotation)
+      button.classList.toggle("active");
+
+      // Toggle content visibility
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
+  });
+});
