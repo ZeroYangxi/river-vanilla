@@ -88,7 +88,8 @@ body {
 .holographic-border {
   position: absolute;
   inset: 0;
-  background: linear-gradient(125deg, #ff96e3, #88d1ff, #ff96e3, #88d1ff);
+  background: linear-gradient(125deg, #ffffff, #414344, #ffffff, #000000);
+  /* background: linear-gradient(125deg, #ff96e3, #88d1ff, #ff96e3, #88d1ff); */
   background-size: 400% 400%;
   animation: borderAnimation 3s ease infinite;
   z-index: 1;
@@ -207,9 +208,9 @@ body {
   inset: 0;
   background: linear-gradient(
     calc(var(--moveX) * 1deg),
-    rgba(222, 255, 245, 0) 0%,
+    rgba(164, 164, 164, 0) 0%,
     rgba(255, 255, 255, 0.7) 50%,
-    rgba(255, 255, 255, 0) 100%
+    rgba(121, 121, 121, 0) 100%
   );
   z-index: 5;
   pointer-events: none;
@@ -244,10 +245,13 @@ body {
   background: linear-gradient(
     calc(var(--moveX) * 1.5deg),
     transparent 0%,
-    rgba(255, 150, 227, 0.4) calc(var(--moveY) - 30%),
+    rgba(255, 255, 255, 0.4) calc(var(--moveY) - 30%),
+    rgba(255, 255, 255, 0.6) calc(var(--moveY)),
+    rgba(0, 0, 0, 0.4) calc(var(--moveY) + 30%),
+    /* rgba(255, 150, 227, 0.4) calc(var(--moveY) - 30%),
     rgba(136, 209, 255, 0.6) calc(var(--moveY)),
-    rgba(255, 150, 227, 0.4) calc(var(--moveY) + 30%),
-    transparent 100%
+    rgba(255, 150, 227, 0.4) calc(var(--moveY) + 30%), */
+      transparent 100%
   );
   z-index: 6;
   pointer-events: none;
@@ -405,6 +409,7 @@ body {
 .accordion-section {
   border-bottom: 0.2px solid rgba(255, 255, 255, 0.5);
   margin-bottom: 1rem;
+  overflow: hidden;
 }
 
 .accordion-button {
