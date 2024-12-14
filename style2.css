@@ -5,6 +5,13 @@
   font-family: "Cormorant Garamond", serif;
 }
 
+/* Section title */
+h2 {
+  margin: 1rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
 /* Canvas and Overlay */
 .canvas-container {
   position: relative;
@@ -149,6 +156,7 @@ body {
 
 .project-item {
   font-size: 4vh;
+  font-style: italic;
   flex: 1 1 180px;
   display: flex;
   flex-direction: column;
@@ -241,7 +249,7 @@ body {
   .overlay {
     bottom: 40vh;
     right: 5%;
-    line-height: 0.8em;
+    line-height: 0.6em;
   }
 
   .overlay p:first-child {
