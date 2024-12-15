@@ -3,9 +3,213 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>River's Ink</title>
+    <title>Neural Ink - River's Blog</title>
+    <link
+      href="https://fonts.font.im/css?family=Cormorant+Garamond"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/cursor/cursor-effect.css" />
+    <script src="/assets/cursor/cursor-effect.js" defer></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Cormorant Garamond", serif;
+        cursor: none; /* Hide default cursor */
+      }
+
+      body {
+        background: black;
+        color: white;
+        min-height: 100vh;
+      }
+
+      .header {
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding-top: 2vh;
+        padding-bottom: 1vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+      }
+
+      .blog-container {
+        max-width: 1400px;
+        margin: 120px auto 0;
+        padding: 0 4vw;
+      }
+
+      .title-section {
+        margin-bottom: 100px;
+        overflow: hidden;
+      }
+
+      .main-title {
+        font-size: clamp(4rem, 12vw, 15rem);
+        font-weight: 300;
+        line-height: 0.9;
+        transform: translateY(100%);
+        animation: slideUp 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      .subtitle {
+        font-size: clamp(1rem, 2vw, 1.5rem);
+        color: #2affff;
+        margin-top: 20px;
+        opacity: 0;
+        animation: fadeIn 1s ease forwards 0.8s;
+      }
+
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+      }
+
+      .blog-card {
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(42, 255, 255, 0.1);
+        text-decoration: none;
+        color: white;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeSlideUp 0.8s ease forwards;
+      }
+
+      .blog-card:hover {
+        background: rgba(42, 255, 255, 0.05);
+        border-color: rgba(42, 255, 255, 0.2);
+        transform: translateY(-5px);
+      }
+
+      .blog-date {
+        font-size: 0.9rem;
+        color: #2affff;
+        font-style: italic;
+      }
+
+      .blog-headline {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 300;
+        line-height: 1.2;
+        margin: 15px 0;
+        text-shadow: 2px 2px 3px rgba(42, 255, 255, 0.3);
+      }
+
+      .blog-excerpt {
+        font-size: 1rem;
+        color: #cccccc;
+        line-height: 1.6;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      @keyframes slideUp {
+        to {
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeSlideUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .blog-card:nth-child(1) {
+        animation-delay: 1s;
+      }
+      .blog-card:nth-child(2) {
+        animation-delay: 1.2s;
+      }
+      .blog-card:nth-child(3) {
+        animation-delay: 1.4s;
+      }
+      .blog-card:nth-child(4) {
+        animation-delay: 1.6s;
+      }
+
+      @media (max-width: 768px) {
+        .blog-container {
+          margin-top: 80px;
+        }
+
+        .title-section {
+          margin-bottom: 60px;
+        }
+
+        .blog-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .blog-card {
+          padding: 20px;
+        }
+
+        .blog-headline {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div>Brain ink</div>
+    <div class="custom-cursor"></div>
+    <header class="header">
+      <!-- Your existing navigation -->
+    </header>
+
+    <main class="blog-container">
+      <section class="title-section">
+        <h1 class="main-title">NEURAL<br />INK</h1>
+        <p class="subtitle">Where brain waves crystallize into words</p>
+      </section>
+
+      <div class="blog-grid">
+        <a href="/blog/post-1" class="blog-card">
+          <span class="blog-date">APR, 2024</span>
+          <h2 class="blog-headline">The Psychology of Digital Interactions</h2>
+          <p class="blog-excerpt">
+            Exploring how our minds process and respond to digital interfaces,
+            and what it means for the future of human-computer interaction.
+          </p>
+        </a>
+
+        <a href="/blog/post-2" class="blog-card">
+          <span class="blog-date">MAR, 2024</span>
+          <h2 class="blog-headline">Cognitive Load in UX Design</h2>
+          <p class="blog-excerpt">
+            Understanding the delicate balance between functionality and mental
+            processing in user experience design.
+          </p>
+        </a>
+
+        <a href="/blog/post-3" class="blog-card">
+          <span class="blog-date">FEB, 2024</span>
+          <h2 class="blog-headline">The Art of Research Synthesis</h2>
+          <p class="blog-excerpt">
+            Transforming raw data into meaningful insights - a journey through
+            the analytical process.
+          </p>
+        </a>
+      </div>
+    </main>
   </body>
 </html>
