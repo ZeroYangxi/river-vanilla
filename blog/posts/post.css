@@ -1,0 +1,281 @@
+/* Base Reset and Typography
+   Using border-box for more predictable sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Cormorant Garamond", serif;
+}
+
+/* Basic Page Structure
+     Black background with white text for high contrast */
+body {
+  background: black;
+  color: white;
+  min-height: 100vh;
+  line-height: 1.6;
+  /* Enable smooth scrolling for anchor links */
+  scroll-behavior: smooth;
+}
+
+/* Fixed Header Navigation
+     Semi-transparent background with blur for better text contrast */
+.header {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 2vh;
+  padding-bottom: 1vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+}
+
+/* Back Navigation Button
+     Fixed position with hover animation */
+.back-button {
+  position: fixed;
+  top: 40px;
+  left: 40px;
+  color: #2affff;
+  text-decoration: none;
+  font-size: clamp(1rem, 2vw, 1.1rem); /* Responsive font size */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards 0.5s;
+  z-index: 101;
+  transition: color 0.3s ease;
+}
+
+.back-button:hover {
+  color: white;
+}
+
+/* Back Arrow Animation */
+.back-arrow {
+  display: inline-block;
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+}
+
+.back-button:hover .back-arrow {
+  transform: translateX(-5px);
+}
+
+/* Main Content Container
+     Centered with responsive maximum width */
+.post-container {
+  max-width: min(800px, 90vw); /* Responsive width */
+  margin: 120px auto 60px;
+  padding: 0 clamp(16px, 5vw, 24px); /* Responsive padding */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideUp 0.8s ease forwards;
+}
+
+/* Post Header Section */
+.post-header {
+  margin-bottom: clamp(40px, 8vh, 60px); /* Responsive margin */
+  text-align: left;
+}
+
+/* Post Title with Fluid Typography */
+.post-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  text-shadow: 2px 2px 3px rgba(42, 255, 255, 0.3);
+}
+
+/* Post Date Styling */
+.post-date {
+  color: #2affff;
+  font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  margin-bottom: 24px;
+  display: inline-block;
+  position: relative;
+}
+
+/* Decorative Line Under Date */
+.post-date::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  width: 40px;
+  height: 1px;
+  background-color: rgba(42, 255, 255, 0.3);
+}
+
+/* Main Content Typography */
+.post-content {
+  font-size: clamp(1rem, 2vw, 1.2rem); /* Responsive font size */
+  color: #f0f0f0;
+}
+
+.post-content p {
+  margin-bottom: clamp(16px, 4vh, 24px); /* Responsive spacing */
+}
+
+/* Content Headings */
+.post-content h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 300;
+  color: #2affff;
+  margin: clamp(32px, 6vh, 48px) 0 clamp(16px, 3vh, 24px);
+}
+
+.post-content h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 300;
+  color: #2affff;
+  margin: clamp(24px, 4vh, 32px) 0 clamp(12px, 2vh, 16px);
+}
+
+/* Post Footer Section */
+.post-footer {
+  margin-top: clamp(60px, 10vh, 80px);
+  padding-top: clamp(30px, 5vh, 40px);
+  border-top: 1px solid rgba(42, 255, 255, 0.2);
+}
+
+/* Navigation Between Posts */
+.post-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: clamp(16px, 3vw, 20px);
+}
+
+.nav-link {
+  flex: 1;
+  color: white;
+  text-decoration: none;
+  padding: clamp(16px, 3vw, 20px);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(42, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background: rgba(42, 255, 255, 0.05);
+  border-color: rgba(42, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.nav-link.previous {
+  text-align: left;
+}
+
+.nav-link.next {
+  text-align: right;
+}
+
+.nav-label {
+  display: block;
+  color: #2affff;
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+  margin-bottom: 8px;
+}
+
+.nav-title {
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  line-height: 1.4;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design Breakpoints */
+
+/* Large Desktop (1200px and up) */
+@media (min-width: 1200px) {
+  .post-container {
+    padding: 0 40px; /* Larger padding for ultra-wide screens */
+  }
+}
+
+/* Desktop to Tablet Landscape (992px to 1199px) */
+@media (max-width: 1199px) {
+  .post-container {
+    margin-top: 100px;
+  }
+}
+
+/* Tablet Portrait to Landscape (768px to 991px) */
+@media (max-width: 991px) {
+  .back-button {
+    top: 30px;
+    left: 30px;
+  }
+}
+
+/* Mobile Landscape to Tablet Portrait */
+@media (max-width: 768px) {
+  .back-button {
+    top: 20px;
+    left: 20px;
+  }
+
+  .post-container {
+    margin-top: 100px;
+    padding: 0 20px;
+  }
+
+  .post-navigation {
+    flex-direction: column;
+  }
+
+  .nav-link {
+    text-align: center !important;
+  }
+}
+
+/* Mobile Portrait */
+@media (max-width: 576px) {
+  .post-title {
+    font-size: clamp(2rem, 8vw, 2.5rem); /* Smaller on mobile */
+  }
+
+  .post-header {
+    margin-bottom: 40px;
+  }
+
+  .post-content {
+    font-size: 1rem; /* Slightly smaller for better mobile reading */
+  }
+
+  .post-footer {
+    margin-top: 60px;
+    padding-top: 30px;
+  }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

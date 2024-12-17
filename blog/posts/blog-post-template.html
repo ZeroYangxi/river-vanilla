@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Post - Neural Ink</title>
+    <link
+      href="https://fonts.font.im/css?family=Cormorant+Garamond"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/cursor/cursor-effect.css" />
+    <script src="/assets/cursor/cursor-effect.js" defer></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      body {
+        background: black;
+        color: white;
+        min-height: 100vh;
+        line-height: 1.6;
+      }
+
+      .header {
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding-top: 2vh;
+        padding-bottom: 1vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+      }
+
+      .back-button {
+        position: fixed;
+        top: 40px;
+        left: 40px;
+        color: #2affff;
+        text-decoration: none;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        opacity: 0;
+        animation: fadeIn 0.5s ease forwards 0.5s;
+        z-index: 101;
+      }
+
+      .back-button:hover {
+        color: white;
+      }
+
+      .back-arrow {
+        display: inline-block;
+        transform: translateX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .back-button:hover .back-arrow {
+        transform: translateX(-5px);
+      }
+
+      .post-container {
+        max-width: 800px;
+        margin: 120px auto 60px;
+        padding: 0 24px;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeSlideUp 0.8s ease forwards;
+      }
+
+      .post-header {
+        margin-bottom: 60px;
+        text-align: left;
+      }
+
+      .post-title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 300;
+        line-height: 1.2;
+        margin-bottom: 16px;
+        text-shadow: 2px 2px 3px rgba(42, 255, 255, 0.3);
+      }
+
+      .post-date {
+        color: #2affff;
+        font-style: italic;
+        font-size: 1.1rem;
+        margin-bottom: 24px;
+        display: inline-block;
+        position: relative;
+      }
+
+      .post-date::after {
+        content: "";
+        position: absolute;
+        bottom: -12px;
+        left: 0;
+        width: 40px;
+        height: 1px;
+        background-color: rgba(42, 255, 255, 0.3);
+      }
+
+      .post-content {
+        font-size: 1.2rem;
+        color: #f0f0f0;
+      }
+
+      .post-content p {
+        margin-bottom: 24px;
+      }
+
+      .post-content h2 {
+        font-size: 2rem;
+        font-weight: 300;
+        color: #2affff;
+        margin: 48px 0 24px;
+      }
+
+      .post-content h3 {
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: #2affff;
+        margin: 32px 0 16px;
+      }
+
+      .post-footer {
+        margin-top: 80px;
+        padding-top: 40px;
+        border-top: 1px solid rgba(42, 255, 255, 0.2);
+      }
+
+      .post-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .nav-link {
+        flex: 1;
+        color: white;
+        text-decoration: none;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(42, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .nav-link:hover {
+        background: rgba(42, 255, 255, 0.05);
+        border-color: rgba(42, 255, 255, 0.2);
+      }
+
+      .nav-link.previous {
+        text-align: left;
+      }
+
+      .nav-link.next {
+        text-align: right;
+      }
+
+      .nav-label {
+        display: block;
+        color: #2affff;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+      }
+
+      .nav-title {
+        font-size: 1.1rem;
+        line-height: 1.4;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeSlideUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .back-button {
+          top: 20px;
+          left: 20px;
+        }
+
+        .post-container {
+          margin-top: 100px;
+          padding: 0 20px;
+        }
+
+        .post-navigation {
+          flex-direction: column;
+        }
+
+        .nav-link {
+          text-align: center !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="custom-cursor"></div>
+
+    <a href="/blog/blog.html" class="back-button">
+      <span class="back-arrow">←</span>
+    </a>
+
+    <main class="post-container">
+      <header class="post-header">
+        <h1 class="post-title">The Psychology of Digital Interactions</h1>
+        <div class="post-date">APR 15, 2024</div>
+      </header>
+
+      <article class="post-content">
+        <!-- Post content goes here -->
+        <p>Your blog post content goes here...</p>
+      </article>
+
+      <footer class="post-footer">
+        <nav class="post-navigation">
+          <a href="/blog/cognitive-load-ux" class="nav-link previous">
+            <span class="nav-label">Previous Post</span>
+            <span class="nav-title">Cognitive Load in UX Design</span>
+          </a>
+          <a href="/blog/research-synthesis" class="nav-link next">
+            <span class="nav-label">Next Post</span>
+            <span class="nav-title">The Art of Research Synthesis</span>
+          </a>
+        </nav>
+      </footer>
+    </main>
+  </body>
+</html>

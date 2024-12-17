@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Category Menu with Previews</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      body {
+        background: #000;
+        color: #fff;
+        min-height: 100vh;
+        padding: 2rem;
+        overflow-x: hidden;
+      }
+
+      .menu-container {
+        position: relative;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 4rem;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .featured-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 5rem;
+        color: #333;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        pointer-events: none;
+        font-weight: bold;
+        line-height: 1;
+      }
+
+      .category-list {
+        position: relative;
+        padding-left: 2rem;
+        margin-top: 8rem;
+        width: 50%;
+      }
+
+      .category-list::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          rgba(42, 255, 255, 0.2),
+          transparent
+        );
+      }
+
+      .category-menu-item {
+        margin-bottom: 2.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+      }
+
+      .item-title {
+        font-size: 2rem;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        transition: all 0.3s ease;
+        font-style: italic;
+      }
+
+      .item-count {
+        font-size: 1.2rem;
+        color: #444;
+        margin-left: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .category-menu-item:hover {
+        transform: translateX(20px);
+      }
+
+      .category-menu-item:hover .item-title {
+        color: #fff;
+        text-shadow: 0 0 10px rgba(42, 255, 255, 0.5);
+      }
+
+      .category-menu-item:hover .item-count {
+        color: #2affff;
+      }
+
+      /* Preview Images Container */
+      .preview-container {
+        position: fixed;
+        right: 5%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 45%;
+        height: 70vh;
+        pointer-events: none;
+      }
+
+      .preview-image {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-radius: 4px;
+      }
+
+      .preview-image.active {
+        opacity: 1;
+      }
+
+      /* Preview Border Effect */
+      .preview-frame {
+        position: absolute;
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        top: -2px;
+        left: -2px;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .preview-frame::before,
+      .preview-frame::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border: 2px solid white;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .preview-frame::before {
+        top: 0;
+        left: 0;
+        border-right: 0;
+        border-bottom: 0;
+        box-shadow: -5px -5px 10px rgba(42, 255, 255, 0.5);
+      }
+
+      .preview-frame::after {
+        bottom: 0;
+        right: 0;
+        border-left: 0;
+        border-top: 0;
+        box-shadow: 5px 5px 10px rgba(42, 255, 255, 0.5);
+      }
+
+      .category-menu-item:hover + .preview-container .preview-frame {
+        opacity: 1;
+      }
+
+      .category-menu-item:hover + .preview-container .preview-frame::before,
+      .category-menu-item:hover + .preview-container .preview-frame::after {
+        opacity: 1;
+      }
+
+      .project-info {
+        position: absolute;
+        bottom: -60px;
+        left: 0;
+        width: 100%;
+        color: #fff;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .project-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: #2affff;
+      }
+
+      .project-description {
+        font-size: 1rem;
+        color: #888;
+      }
+
+      .category-menu-item:hover + .preview-container .project-info {
+        opacity: 1;
+        transform: translateY(-20px);
+      }
+
+      @media (max-width: 1200px) {
+        .preview-container {
+          width: 40%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .menu-container {
+          flex-direction: column;
+        }
+
+        .category-list {
+          width: 100%;
+        }
+
+        .preview-container {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu-container">
+      <div class="featured-text">
+        <span
+          style="
+            font-size: 2rem;
+            margin-right: 1rem;
+            display: inline-block;
+            transform: rotate(-45deg);
+          "
+          >↘</span
+        >
+        FEATURED
+        <div style="font-size: 4rem; margin-left: 4rem">WORKS</div>
+      </div>
+
+      <div class="category-list">
+        <div class="category-menu-item" data-project="all">
+          <span class="item-title">All</span>
+          <span class="item-count">17</span>
+        </div>
+        <div class="category-menu-item" data-project="ui">
+          <span class="item-title">Interactive Realms</span>
+          <span class="item-count">10</span>
+          <div class="preview-container">
+            <img
+              src="/assets/placeholder.jpeg"
+              alt="EdWay Project"
+              class="preview-image"
+            />
+            <div class="preview-frame"></div>
+            <div class="project-info">
+              <h3 class="project-title">EdWay - Educational Platform</h3>
+              <p class="project-description">UI/UX, Product Design, 2022</p>
+            </div>
+          </div>
+        </div>
+        <div class="category-menu-item" data-project="digital">
+          <span class="item-title">Digital Dreams</span>
+          <span class="item-count">4</span>
+          <div class="preview-container">
+            <img
+              src="/assets/placeholder.jpeg"
+              alt="Digital Art"
+              class="preview-image"
+            />
+            <div class="preview-frame"></div>
+            <div class="project-info">
+              <h3 class="project-title">Neural Synthesis</h3>
+              <p class="project-description">
+                Digital Art, Generative Design, 2023
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="category-menu-item" data-project="poems">
+          <span class="item-title">Written Echoes</span>
+          <span class="item-count">6</span>
+          <div class="preview-container">
+            <img
+              src="/api/placeholder/800/500"
+              alt="Poetry Collection"
+              class="preview-image"
+            />
+            <div class="preview-frame"></div>
+            <div class="project-info">
+              <h3 class="project-title">Midnight Whispers</h3>
+              <p class="project-description">
+                Poetry Collection, Visual Prose, 2023
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.querySelectorAll(".category-menu-item").forEach((item) => {
+        item.addEventListener("mouseenter", () => {
+          // Hide all preview images
+          document.querySelectorAll(".preview-image").forEach((img) => {
+            img.classList.remove("active");
+          });
+
+          // Show the preview image for this item
+          const preview = item.querySelector(".preview-image");
+          if (preview) {
+            preview.classList.add("active");
+          }
+
+          // Add slight glitch effect
+          const title = item.querySelector(".item-title");
+          setTimeout(() => {
+            title.style.transform = `translateY(${Math.random() * 2 - 1}px)`;
+          }, 50);
+        });
+
+        item.addEventListener("mouseleave", () => {
+          const title = item.querySelector(".item-title");
+          title.style.transform = "translateY(0)";
+        });
+      });
+    </script>
+  </body>
+</html>

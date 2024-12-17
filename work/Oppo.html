@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OPPO Latency Case Study</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      body {
+        background: rgb(18, 18, 18);
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.6;
+        padding: 0 5vw;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 0;
+      }
+
+      .process-section {
+        margin-bottom: 6rem;
+      }
+
+      .subtitle {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 1rem;
+      }
+
+      .title {
+        font-size: 2.5rem;
+        font-weight: normal;
+        margin-bottom: 3rem;
+        line-height: 1.2;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .grid-item {
+        margin-bottom: 2rem;
+      }
+
+      .grid-item h3 {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        font-weight: normal;
+      }
+
+      .grid-item p {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 1rem;
+      }
+
+      .content {
+        max-width: 800px;
+        margin: 4rem auto;
+      }
+
+      .content h2 {
+        font-size: 1.8rem;
+        margin: 2.5rem 0 1rem;
+        font-weight: normal;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .content h3 {
+        font-size: 1.4rem;
+        margin: 2rem 0 1rem;
+        font-weight: normal;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .content p {
+        margin-bottom: 1.5rem;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .content ul {
+        margin: 1rem 0 2rem 2rem;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .content li {
+        margin-bottom: 0.5rem;
+      }
+
+      .quote {
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.7);
+        padding-left: 1rem;
+        border-left: 2px solid rgba(255, 255, 255, 0.3);
+        margin: 2rem 0;
+      }
+
+      .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+
+      .image-grid img {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+      }
+
+      .emphasis {
+        color: rgba(42, 255, 255, 0.9);
+      }
+
+      @media (max-width: 768px) {
+        .title {
+          font-size: 2rem;
+        }
+
+        .container {
+          padding: 2rem 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section class="process-section">
+        <div class="subtitle">Process Highlights</div>
+        <h1 class="title">
+          Optimizing Smartphone Latency at OPPO: Defining New Standards for User
+          Experience
+        </h1>
+
+        <div class="grid">
+          <div class="grid-item">
+            <h3>Challenge</h3>
+            <p>
+              How slow is too slow? Defining precise latency thresholds for
+              smartphone interactions
+            </p>
+          </div>
+          <div class="grid-item">
+            <h3>Timeline</h3>
+            <p>16 weeks across three major sprints</p>
+          </div>
+          <div class="grid-item">
+            <h3>Role</h3>
+            <p>UX Researcher & Testing Platform Developer</p>
+          </div>
+          <div class="grid-item">
+            <h3>Impact</h3>
+            <p>
+              Established new latency standards across 9 scenarios based on
+              12,000+ user trials
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="content">
+        <div class="quote">
+          Picture this: Your phone rings during a crucial client meeting. You
+          tap frantically, but there's that tiny gap between your touch and the
+          phone's response. That gap—latency—can feel like an eternity.
+        </div>
+
+        <h2>Our Journey</h2>
+        <p>
+          We started with a simple question: "How fast should a phone respond?"
+          But answering it required both scientific rigor and real-world
+          context.
+        </p>
+
+        <h2>Sprint 1: Foundation Building (6 weeks)</h2>
+
+        <h3>Stakeholder Alignment</h3>
+        <ul>
+          <li>
+            Initial product requirements targeted generic "faster is better"
+            approach
+          </li>
+          <li>
+            Pushed back with psychological research on perception thresholds
+          </li>
+          <li>
+            Convinced PM team to support comprehensive user research before
+            setting standards
+          </li>
+          <li>
+            Aligned with SDE team on prioritizing perceived performance through
+            quality animations
+          </li>
+        </ul>
+
+        <h3>Research Design</h3>
+        <ul>
+          <li>
+            Created a testing platform that could precisely control response
+            times with engineering team
+          </li>
+          <li>
+            Selected 7 carefully crafted scenarios across three categories:
+            <ul>
+              <li>
+                System interactions (like checking time—something we do 47-82
+                times daily!)
+              </li>
+              <li>In-app settings (complex but focused tasks)</li>
+              <li>Network loading (where users expect some waiting)</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>The Twist & Development Constraints</h3>
+        <ul>
+          <li>
+            Engineering team raised concerns about implementation complexity
+          </li>
+          <li>
+            Negotiated focused testing on key interaction points, rather than
+            complete task chains
+          </li>
+          <li>Result: More precise data with fewer development resources</li>
+        </ul>
+
+        <h2>Sprint 2: Initial Study & Surprising Discoveries (4 weeks)</h2>
+
+        <h3><span class="emphasis">The Tale of Two Users</span></h3>
+        <ul>
+          <li>⅔ of users followed our expected pattern: faster = better</li>
+          <li>
+            ⅓ of users actually reported discomfort with extremely fast
+            responses (our "sensitive group")
+          </li>
+        </ul>
+
+        <p>
+          <span class="emphasis">The Logarithmic Truth:</span> Discovered a
+          strong logarithmic relationship between latency and satisfaction (R² =
+          0.68~0.79). In other words, small delays at the fast end matter more
+          than bigger delays at the slow end.
+        </p>
+
+        <h2>Sprint 3: Enhanced Study Design (6 weeks)</h2>
+
+        <p>
+          Our first study was enlightening but artificial. Time to get real.
+        </p>
+
+        <h3>Development & Testing</h3>
+        <p>
+          I independently developed the web-based testing platform in 2 weeks,
+          creating engaging interfaces that felt natural instead of
+          experimental.
+        </p>
+
+        <h3>Creative User Testing Scenario Design</h3>
+        <div class="image-grid">
+          <img src="/api/placeholder/400/300" alt="Work Rush Scenario" />
+          <img
+            src="/api/placeholder/400/300"
+            alt="Gaming Interruption Scenario"
+          />
+        </div>
+
+        <h3>1. The Work Rush</h3>
+        <ul>
+          <li>Combined physical dart-throwing with digital check-in</li>
+          <li>Physical activity increases latency tolerance</li>
+        </ul>
+
+        <h3>2. The Gaming Interruption</h3>
+        <ul>
+          <li>A scenario where urgent messages interrupt gameplay</li>
+          <li>
+            Fascinating interaction: Users tolerate slower message-opening if
+            game-return is fast
+          </li>
+          <li>Informed priorities for development team</li>
+        </ul>
+
+        <h2>The Aha Moments</h2>
+
+        <h3>Most Compelling Findings</h3>
+        <ul>
+          <li>
+            <span class="emphasis">Context is King</span>
+            <ul>
+              <li>
+                Same X00ms delay feels different when gaming versus settings
+              </li>
+              <li>Physical movement can mask digital delays</li>
+              <li>
+                Users have different latency expectations based on task urgency
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="emphasis">The Speed Paradox</span>
+            <ul>
+              <li>Sometimes, too fast is just as bad as too slow</li>
+              <li>Animation quality matters as much as speed</li>
+              <li>
+                Different user groups need different optimization strategies
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2>Impact & Future</h2>
+        <p>Our findings led to nuanced recommendations:</p>
+        <ul>
+          <li>System interactions: Optimize for X50ms threshold</li>
+          <li>Gaming scenarios: Prioritize return-to-game speed</li>
+          <li>Consider user-adjustable animation speeds</li>
+          <li>Develop context-aware performance modes</li>
+        </ul>
+
+        <h2>If I Were to Do It Again...</h2>
+
+        <h3>🔍 Better Data Collection</h3>
+        <ul>
+          <li>
+            <span class="emphasis">Smarter Logging:</span> Create demos that can
+            watch users' natural "survival tricks" when apps get slow
+          </li>
+          <li>
+            <span class="emphasis">Long-term Tracking:</span> Implement
+            continuous behavior tracking to understand how users interact with
+            their devices over weeks
+          </li>
+          <li>
+            <span class="emphasis">Deeper Interviews:</span> Conduct longer
+            interviews to understand the "why" behind user behaviors
+          </li>
+          <li>
+            <span class="emphasis">Physical Responses:</span> Add eye tracking
+            and stress indicators to see how users physically react to delays
+          </li>
+        </ul>
+
+        <h3>🎯 Clearer Communication with Stakeholders</h3>
+        <ul>
+          <li>
+            <span class="emphasis">Experience demo:</span> Build simple demos
+            where stakeholders can experience different latency levels
+            themselves
+          </li>
+          <li>
+            <span class="emphasis">Business Value:</span> Prepare clear ROI
+            projections - like "reducing latency by X milliseconds could
+            increase user engagement by Y%"
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
