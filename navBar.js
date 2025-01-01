@@ -33,6 +33,13 @@ function smoothScrollToElement(elementId) {
       behavior: "smooth",
       block: "start",
     });
+    // 跳转后关闭菜单栏
+    const menuIcon = document.getElementById("menuIcon");
+    const closeIcon = document.getElementById("closeIcon");
+    const navBar = document.querySelector(".navBar");
+    navBar.classList.remove("active");
+    menuIcon.classList.remove("active");
+    closeIcon.classList.remove("active");
   } else {
     // 如果需要跳转到另一个页面，先跳转，然后滚动
     window.location.href = `index.html#${elementId}`;
