@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       delay: 100,
     },
     {
-      text: "Beyond Screens: Building with HTML/CSS/JavaScript/TypeScript, exploring data with Python. Come say hi, scroll down to connect! ✨ (3/3)",
+      text: "Beyond Screens: Building with HTML/CSS/JavaScript/TypeScript, exploring data with Python. Scroll down to say hi! ✨ (3/3)",
       delay: 100,
     },
   ];
