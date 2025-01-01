@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About River | Interactive Experience</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        body {
+            background: black;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .canvas-section {
+            position: fixed;
+            width: 50%;
+            height: 100vh;
+            background: #000;
+        }
+
+        #interactive-canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        .content-section {
+            width: 50%;
+            margin-left: 50%;
+            padding: 4rem 2rem;
+            background: linear-gradient(45deg, rgba(0,0,0,0.9), rgba(0,0,0,0.95));
+        }
+
+        .content-block {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+            margin-bottom: 6rem;
+            padding: 2rem;
+            border-radius: 1rem;
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+        }
+
+        .content-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #2affff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(42, 255, 255, 0.3);
+        }
+
+        .section-content {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            line-height: 1.8;
+            color: rgba(255,255,255,0.9);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .canvas-section {
+                position: relative;
+                width: 100%;
+                height: 50vh;
+            }
+
+            .content-section {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="canvas-section">
+            <canvas id="interactive-canvas"></canvas>
+        </div>
+        
+        <div class="content-section">
+            <div class="content-block">
+                <h2 class="section-title">About River</h2>
+                <div class="section-content">
+                    <p>Life is an art—a liquid craft in progress. I blend psychology with technology, finding serious fun along the way. Each day is a new canvas, where code meets creativity, and ideas flow like water.</p>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h2 class="section-title">What Intrigues Me</h2>
+                <div class="section-content">
+                    <p><strong>Writing</strong> — Hoarding ideas like a squirrel saves nuts—mostly for tweets I'll never post.</p>
+                    <p><strong>Painting</strong> — Making colors dance until they behave.</p>
+                    <p><strong>Programming</strong> — "I build my ideas"—stolen from Jordan Singer.</p>
+                    <p><strong>Pokémon TCG</strong> — That shiny EX card? Worth it.</p>
+                    <p><strong>Psychology</strong> — Because humans are fascinatingly weird.</p>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h2 class="section-title">Education</h2>
+                <div class="section-content">
+                    <p><strong>Master of Information Science</strong><br>
+                    Cornell University | 2023–2025<br>
+                    Specialization: Interactive Technology</p>
+                    
+                    <br>
+                    
+                    <p><strong>Bachelor of Science in Psychology</strong><br>
+                    The Chinese University of Hong Kong, Shenzhen | 2019–2023</p>
+                    
+                    <br>
+                    
+                    <p><strong>Exchange Program</strong><br>
+                    The University of North Carolina at Chapel Hill | Spring 2023<br>
+                    Focus: Computer Science and Psychology</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Interactive Canvas Setup
+        const canvas = document.getElementById('interactive-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let mouseX = 0;
+        let mouseY = 0;
+
+        // Set canvas size
+        function setCanvasSize() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+        setCanvasSize();
+        window.addEventListener('resize', setCanvasSize);
+
+        // Particle class
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 2 - 1;
+                this.speedY = Math.random() * 2 - 1;
+                this.life = Math.random() * 100 + 100;
+                this.fullLife = this.life;
+            }
+
+            update() {
+                // Calculate distance to mouse
+                const dx = this.x - mouseX;
+                const dy = this.y - mouseY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                // Add repulsion from mouse
+                if (distance < 100) {
+                    const angle = Math.atan2(dy, dx);
+                    const force = (100 - distance) / 100;
+                    this.speedX += Math.cos(angle) * force * 0.2;
+                    this.speedY += Math.sin(angle) * force * 0.2;
+                }
+
+                // Update position
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                // Add some randomness
+                this.speedX += (Math.random() - 0.5) * 0.1;
+                this.speedY += (Math.random() - 0.5) * 0.1;
+
+                // Dampen speed
+                this.speedX *= 0.99;
+                this.speedY *= 0.99;
+
+                // Bounce off edges
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+
+                // Update life
+                this.life--;
+                if (this.life < 0) this.reset();
+            }
+
+            draw() {
+                const alpha = this.life / this.fullLife;
+                ctx.fillStyle = `rgba(42, 255, 255, ${alpha * 0.5})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        // Create particles
+        for (let i = 0; i < 100; i++) {
+            particles.push(new Particle());
+        }
+
+        // Animation loop
+        function animate() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        // Track mouse position
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+        });
+
+        // Start animation
+        animate();
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.content-block').forEach(block => {
+            observer.observe(block);
+        });
+    </script>
+</body>
+</html>

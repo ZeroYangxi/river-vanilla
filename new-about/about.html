@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Behind the Screen: River</title>
+    <link
+      href="https://fonts.font.im/css?family=Cormorant+Garamond"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="about.css" />
+    <link rel="stylesheet" href="../navBar.css" />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <label for="menu" class="icons">
+        <img
+          id="menuIcon"
+          src="../assets/menu-icon-white.png"
+          alt="menu-icon"
+        />
+        <img id="closeIcon" src="../assets/x-icon-white.png" alt="close-icon" />
+      </label>
+      <nav class="navBar">
+        <a href="../index.html">Craft</a>
+        <a href="/blog/blog.html">Muse</a>
+        <a href="about.html">Meet River</a>
+      </nav>
+    </header>
+
+    <div class="layout-container">
+      <!-- Pokemon card section -->
+      <div class="card-container">
+        <div class="pokemon-card" id="interactiveCard">
+          <div class="holographic-border"></div>
+          <div class="card-frame">
+            <div class="profile-container">
+              <img
+                src="profile3.png"
+                alt="Profile Picture"
+                class="profile-image"
+              />
+            </div>
+          </div>
+          <div class="energy-overlay"></div>
+          <div class="shine-effect"></div>
+          <div class="rainbow-shine"></div>
+        </div>
+      </div>
+
+      <!-- Chat section -->
+      <div class="chat-container">
+        <div class="card-prompt">
+          A wild River appears! <br />
+          Tap anywhere to start chatting, or play with the card for fun 💫
+        </div>
+        <div class="chat-history" id="chatHistory">
+          <!-- Chat messages will be added here dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Shooting Star Connect Button -->
+    <div class="connect-star-container">
+      <button class="connect-star">
+        <div class="star-trail"></div>
+        <div class="star">✦</div>
+        <span class="connect-text">Let's Connect!</span>
+      </button>
+
+      <div class="connect-popup">
+        <a href="mailto:riveryangxi@gmail.com" class="connect-link">
+          <span>✉️</span>
+          <span>Email</span>
+        </a>
+        <a href="https://github.com/ZeroYangxi" class="connect-link">
+          <span>⚡</span>
+          <span>GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/riveryu/" class="connect-link">
+          <span>💫</span>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Connect section -->
+    <div class="connect-section">
+      <h2>Let's Connect!</h2>
+      <div class="social-links">
+        <a href="mailto:riveryangxi@gmail.com" class="social-link email">
+          <span>Email</span>
+        </a>
+        <a href="https://github.com/ZeroYangxi" class="social-link github">
+          <span>GitHub</span>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/riveryu/"
+          class="social-link linkedin"
+        >
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </div>
+
+    <script src="../navBar.js"></script>
+    <script src="about.js"></script>
+  </body>
+  <footer class="footer">
+    © 2024 River Yu. All Rights Reserved. Designed & Developed with Matcha
+    Lattes (no sugar, no ice) alongside Claude 3.5 Sonnet.
+  </footer>
+</html>

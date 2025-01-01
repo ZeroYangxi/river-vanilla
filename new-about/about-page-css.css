@@ -1,0 +1,247 @@
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Cormorant Garamond", serif;
+}
+
+body {
+  background: black;
+  color: white;
+  min-height: 100vh;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Layout Container */
+.layout-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  margin: 0 auto;
+  padding: 20px;
+  flex-wrap: nowrap;
+  padding-top: 80px; /* Account for fixed header */
+}
+
+/* Card Container */
+.card-container {
+  perspective: 1000px;
+  width: 50vh;
+  height: auto;
+  aspect-ratio: 5/7;
+  flex-shrink: 0;
+  transform-style: preserve-3d;
+}
+
+/* Pokemon Card */
+.pokemon-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.1s ease-out;
+  cursor: pointer;
+  border-radius: 16px;
+  overflow: hidden;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Card Effects */
+.holographic-border {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(125deg, #ffffff, #414344, #ffffff, #000000);
+  background-size: 400% 400%;
+  animation: borderAnimation 3s ease infinite;
+  z-index: 1;
+  opacity: 0.8;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.card-frame {
+  position: absolute;
+  inset: 14px;
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+/* Profile Image */
+.profile-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+/* Shine Effects */
+.shine-effect {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    calc(var(--moveX, 50) * 1deg),
+    transparent 0%,
+    rgba(255, 255, 255, 0.5) 25%,
+    rgba(255, 255, 255, 0.7) 45%,
+    rgba(255, 255, 255, 0.5) 65%,
+    transparent 100%
+  );
+  opacity: 0.6;
+  z-index: 3;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.rainbow-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    calc(var(--moveX, 50) * 1.5deg),
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) calc(var(--moveY, 50) - 30%),
+    rgba(255, 255, 255, 0.6) calc(var(--moveY, 50)),
+    rgba(0, 0, 0, 0.4) calc(var(--moveY, 50) + 30%),
+    transparent 100%
+  );
+  z-index: 4;
+  pointer-events: none;
+  mix-blend-mode: color-dodge;
+  opacity: 0.6;
+}
+
+/* Accordion Section */
+.accordion-section {
+  flex: 1;
+  min-width: 300px;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.accordion-button {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+  text-align: left;
+  transition: color 0.3s ease;
+}
+
+.accordion-button:hover {
+  color: #88d1ff;
+}
+
+.icon {
+  font-size: 2rem;
+  font-weight: 300;
+  transition: transform 0.3s ease;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  padding: 0 1rem;
+}
+
+.accordion-content.active {
+  padding-bottom: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .layout-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .card-container {
+    width: min(300px, 90vw);
+    margin: 0 auto;
+  }
+
+  .accordion-section {
+    width: 100%;
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .layout-container {
+    padding: 10px;
+    padding-top: 60px;
+  }
+
+  .pokemon-card {
+    transform: none !important;
+    animation: mobilePokemonCard 5s infinite;
+  }
+
+  .shine-effect {
+    background: linear-gradient(
+      70deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0) 35%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 65%,
+      transparent 100%
+    );
+    background-size: 200% 200%;
+    animation: mobileShine 3s infinite;
+  }
+
+  .rainbow-shine {
+    background: linear-gradient(
+      70deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0) 35%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.3) 51%,
+      rgba(255, 255, 255, 0) 65%,
+      transparent 100%
+    );
+    background-size: 200% 200%;
+    animation: mobileRainbow 3s infinite;
+    opacity: 0.3;
+  }
+}
+
+/* Animations */
+@keyframes borderAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes mobilePokemonCard {
+  0%, 100% { transform: rotate3d(0.5, -0.5, 0, 2deg); }
+  50% { transform: rotate3d(-0.5, 0.5, 0, 2deg); }
+}
+
+@keyframes mobileShine {
+  0% { background-position: 200% 50%; }
+  100% { background-position: -200% 50%; }
+}
+
+@keyframes mobileRainbow {
+  0% { background-position: 200% 50%; }
+  100% { background-position: -200% 50%; }
+}

@@ -9,6 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/assets/cursor/cursor-effect.css" />
+    <link rel="stylesheet" href="../navBar.css" />
     <script src="/assets/cursor/cursor-effect.js" defer></script>
     <style>
       * {
@@ -169,10 +170,15 @@
       }
     </style>
   </head>
+
   <body>
     <div class="custom-cursor"></div>
     <header class="header">
-      <!-- Your existing navigation -->
+      <nav class="navBar">
+        <a href="../index.html">Craft</a>
+        <a href="/blog/blog.html">Muse</a>
+        <a href="../new-about/about.html">Meet River</a>
+      </nav>
     </header>
 
     <main class="blog-container">
@@ -182,12 +188,22 @@
       </section>
 
       <div class="blog-grid">
-        <a href="" class="blog-card">
-          <span class="blog-date">APR, 2024</span>
-          <h2 class="blog-headline">The Psychology of Digital Interactions</h2>
+        <a href="/blog/posts/大脑可塑性202412.html" class="blog-card">
+          <span class="blog-date">DEC, 2024</span>
+          <h2 class="blog-headline">Brain Plasticity at Any Age</h2>
           <p class="blog-excerpt">
-            Exploring how our minds process and respond to digital interfaces,
-            and what it means for the future of human-computer interaction.
+            Science-backed techniques to harness your brain's natural ability to
+            be focused and change. （Eng/简中,
+            不论18岁80岁，利用大脑可塑性的方法）
+          </p>
+        </a>
+
+        <a href="/blog/posts/聪明执念202412.html" class="blog-card">
+          <span class="blog-date">DEC, 2024</span>
+          <h2 class="blog-headline">Still hung up on being 'smart'?</h2>
+          <p class="blog-excerpt">
+            Genius bows to courage: intelligence surrenders where vulnerability
+            begins to sing.（Eng/简中, 放不下”我很聪明”的执念？）
           </p>
         </a>
 
@@ -198,8 +214,17 @@
           </h2>
           <p class="blog-excerpt">
             Practical wisdom for navigating the transition to tech while staying
-            grounded in what matters most. （Eng/繁中,
-            標題：轉碼是爲了更好地生活：調整心態的實操方法。）
+            grounded in what matters most.
+            轉碼是爲了更好地生活：調整心態的實操方法。（Eng/繁中）
+          </p>
+        </a>
+
+        <a href="/blog/posts/东亚202311.html" class="blog-card">
+          <span class="blog-date">NOV, 2023</span>
+          <h2 class="blog-headline">Learning to Derail 允许错轨</h2>
+          <p class="blog-excerpt">
+            How imperfection becomes the pathway to growth.<br />
+            （Eng/简中）
           </p>
         </a>
 
@@ -210,10 +235,16 @@
           </h2>
           <p class="blog-excerpt">
             Intimate whispers of personal moments and reflections, written in
-            Chinese. I'm sharing them as they are. 个人化的碎片呓语，简体中文。
+            Simplified Chinese. I'm sharing them as they are.
+            个人化的碎片呓语，简体中文。
           </p>
         </a>
       </div>
     </main>
+    <script src="../navBar.js"></script>
   </body>
+  <!-- <footer class="footer">
+    © 2024 River Yu. All Rights Reserved. Designed & Developed with Matcha
+    Lattes (no sugar, no ice) alongside Claude 3.5 Sonnet.
+  </footer> -->
 </html>

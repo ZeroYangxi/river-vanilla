@@ -9,21 +9,26 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="about.css" />
+    <link rel="stylesheet" href="/navBar.css" />
+    <script src="../navBar.js"></script>
   </head>
   <body>
+    <header class="header">
+      <label for="menu" class="icons">
+        <img id="menuIcon" src="./assets/menu-icon-white.png" alt="menu-icon" />
+        <img id="closeIcon" src="./assets/x-icon-white.png" alt="close-icon" />
+      </label>
+      <nav class="navBar">
+        <a href="../index.html">Craft</a>
+        <a href="/blog/blog.html">Muse</a>
+        <a href="about.html">Meet River</a>
+      </nav>
+    </header>
     <div class="layout-container">
       <div class="card-container">
         <div class="pokemon-card">
           <div class="holographic-border"></div>
           <div class="card-frame">
-            <div class="card-header">
-              <span class="basic-tag">River</span>
-              <div class="hp">
-                <span>TRAINER</span>
-                <!-- <div class="water-symbol"></div> -->
-              </div>
-            </div>
-
             <div class="profile-container">
               <img
                 src="profile3.png"
@@ -32,14 +37,13 @@
               />
             </div>
 
-            <div class="move-container">
-              <!-- <div class="water-symbol"></div> -->
+            <!-- <div class="move-container">
+              <div class="water-symbol"></div>
               <span class="move-name"> Research, design, code, and have serious fun!</span>
               <span class="move-power">200</span>
-            </div>
-
+            </div> 
             <div class="description">
-            </div>
+            </div>-->
           </div>
           <div class="energy-overlay"></div>
           <div class="shine-effect"></div>

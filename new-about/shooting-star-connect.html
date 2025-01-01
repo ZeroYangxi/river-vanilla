@@ -1,0 +1,170 @@
+<!-- Add this to your HTML -->
+<div class="connect-star-container">
+  <button class="connect-star">
+    <div class="star-trail"></div>
+    <div class="star">✦</div>
+    <span class="connect-text">Let's Connect!</span>
+  </button>
+  
+  <!-- Connect links pop up when star is clicked -->
+  <div class="connect-popup">
+    <a href="mailto:your.email@example.com" class="connect-link">
+      <span>✉️</span>
+      <span>Email</span>
+    </a>
+    <a href="https://github.com/yourusername" class="connect-link">
+      <span>⚡</span>
+      <span>GitHub</span>
+    </a>
+    <a href="https://linkedin.com/in/yourusername" class="connect-link">
+      <span>💫</span>
+      <span>LinkedIn</span>
+    </a>
+  </div>
+</div>
+
+<style>
+.connect-star-container {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 1000;
+}
+
+.connect-star {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.3s ease;
+}
+
+.star {
+  font-size: 24px;
+  color: #2affff;
+  text-shadow: 0 0 10px rgba(42, 255, 255, 0.8);
+  animation: twinkle 1.5s infinite ease-in-out;
+  position: relative;
+  z-index: 2;
+}
+
+.star-trail {
+  position: absolute;
+  top: 50%;
+  right: 24px; /* Adjust based on star size */
+  height: 2px;
+  width: 0;
+  background: linear-gradient(to left, #2affff, transparent);
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.connect-text {
+  color: white;
+  font-size: 16px;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.3s ease;
+}
+
+.connect-star:hover .star-trail {
+  width: 60px;
+  opacity: 1;
+}
+
+.connect-star:hover .connect-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.connect-popup {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.connect-popup.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.connect-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.connect-link:hover {
+  background: rgba(42, 255, 255, 0.2);
+  transform: translateX(5px);
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(0.9); }
+}
+
+/* Add shooting star animation for initial appearance */
+@keyframes shootingStar {
+  0% { 
+    transform: translateX(100vw) translateY(-100vh) rotate(45deg);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  100% { 
+    transform: translateX(calc(100vw - 400px)) translateY(calc(100vh - 100px)) rotate(45deg);
+    opacity: 1;
+  }
+}
+
+.connect-star.initial-animation {
+  animation: shootingStar 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const connectStar = document.querySelector('.connect-star');
+  const connectPopup = document.querySelector('.connect-popup');
+  
+  // Add initial animation class after a delay
+  setTimeout(() => {
+    connectStar.classList.add('initial-animation');
+  }, 1000);
+
+  // Toggle popup on star click
+  connectStar.addEventListener('click', () => {
+    connectPopup.classList.toggle('active');
+  });
+
+  // Close popup when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!connectStar.contains(e.target) && !connectPopup.contains(e.target)) {
+      connectPopup.classList.remove('active');
+    }
+  });
+});
+</script>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Map About Me</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+      }
+
+      .map {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        position: relative;
+      }
+
+      .hotspot {
+        position: absolute;
+        cursor: pointer;
+        text-align: center;
+        border: 2px solid #2affff;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .hotspot:hover {
+        background-color: #2affff;
+        color: black;
+      }
+
+      .popup {
+        position: absolute;
+        bottom: 120%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: black;
+        border: 2px solid #2affff;
+        padding: 10px;
+        border-radius: 5px;
+        display: none;
+        width: 200px;
+      }
+
+      .hotspot:hover .popup {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="map">
+      <!-- Psychology Hotspot -->
+      <div class="hotspot" style="top: 20%; left: 30%">
+        <div>Psychology</div>
+        <div class="popup">
+          <h4>Decoding Human Behavior</h4>
+          <p>
+            My background in psychology equips me to design for human behavior.
+            From studying decision-making to emotions, I bridge the gap between
+            the mind and UX.
+          </p>
+        </div>
+      </div>
+
+      <!-- UX Design Hotspot -->
+      <div class="hotspot" style="top: 50%; left: 50%">
+        <div>UX Design</div>
+        <div class="popup">
+          <h4>Designing Intuitive Journeys</h4>
+          <p>
+            I craft user experiences that are functional and delightful. My
+            process combines data-driven insights with creativity to solve
+            real-world problems.
+          </p>
+        </div>
+      </div>
+
+      <!-- Art Hotspot -->
+      <div class="hotspot" style="top: 70%; left: 70%">
+        <div>Art</div>
+        <div class="popup">
+          <h4>Color and Creativity</h4>
+          <p>
+            Art fuels my soul and inspires my design. From watercolors to oil
+            paintings, my artistic endeavors influence my approach to UX and
+            beyond.
+          </p>
+        </div>
+      </div>
+
+      <!-- Technology Hotspot -->
+      <div class="hotspot" style="top: 30%; left: 70%">
+        <div>Technology</div>
+        <div class="popup">
+          <h4>Blending Code and Creativity</h4>
+          <p>
+            With a foundation in computer science, I leverage technology to
+            prototype and create, merging technical skill with creative
+            solutions.
+          </p>
+        </div>
+      </div>
+
+      <!-- Personal Insights Hotspot -->
+      <div class="hotspot" style="top: 80%; left: 40%">
+        <div>Personal</div>
+        <div class="popup">
+          <h4>Beyond the Resume</h4>
+          <p>
+            When I’m not designing, I enjoy swing dancing, painting, and
+            discovering new ways to stay inspired.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>River's Collector's Desk</title>
+    <link href="https://fonts.font.im/css?family=Cormorant+Garamond" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        body {
+            background: #0a0a0f;
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Desk Environment */
+        .desk-environment {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            perspective: 1000px;
+            overflow: hidden;
+            background: linear-gradient(45deg, #0a0a0f 0%, #1a1a2f 100%);
+        }
+
+        .desk {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateX(20deg);
+            width: 90vw;
+            height: 80vh;
+            background: linear-gradient(45deg, #1e1e2d, #2a2a3d);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            transform-style: preserve-3d;
+        }
+
+        /* Card Container */
+        .card-container {
+            position: relative;
+            transform-style: preserve-3d;
+            transform: translateZ(50px);
+            grid-column: 1;
+            height: 100%;
+        }
+
+        .pokemon-card {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(125deg, #ffffff, #414344, #ffffff, #000000);
+            border-radius: 15px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Journal Section */
+        .journal {
+            grid-column: 2;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            transform: translateZ(30px);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            overflow-y: auto;
+        }
+
+        .journal h2 {
+            font-size: 2rem;
+            color: #88d1ff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(136, 209, 255, 0.3);
+        }
+
+        .journal p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* Polaroid Wall */
+        .polaroid-wall {
+            grid-column: 3;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            transform: translateZ(40px);
+            padding: 20px;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: rotate(var(--rotation));
+            transition: transform 0.3s ease;
+        }
+
+        .polaroid:hover {
+            transform: rotate(var(--rotation)) scale(1.05);
+        }
+
+        .polaroid-content {
+            color: black;
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Ambient Particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50px);
+            }
+        }
+
+        /* Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .navBar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .navBar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .navBar a:hover {
+            color: #88d1ff;
+            text-shadow: 0 0 10px rgba(136, 209, 255, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .desk {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(3, auto);
+                height: auto;
+                transform: none;
+                overflow-y: auto;
+            }
+
+            .card-container, .journal, .polaroid-wall {
+                grid-column: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navBar">
+            <a href="../index.html">Craft</a>
+            <a href="/blog/blog.html">Muse</a>
+            <a href="about.html">Meet River</a>
+        </nav>
+    </header>
+
+    <div class="desk-environment">
+        <div class="particles"></div>
+        <div class="desk">
+            <!-- Pokemon Card Section -->
+            <div class="card-container">
+                <div class="pokemon-card">
+                    <!-- Your existing Pokemon card content -->
+                </div>
+            </div>
+
+            <!-- Journal Section -->
+            <div class="journal">
+                <h2>About River</h2>
+                <p>Life is an art—a liquid craft in progress. I blend psychology with technology, finding serious fun along the way.</p>
+                
+                <h2>Education</h2>
+                <p>Master of Information Science<br>
+                Cornell University | 2023–2025<br>
+                Specialization: Interactive Technology</p>
+                
+                <p>Bachelor of Science in Psychology<br>
+                The Chinese University of Hong Kong, Shenzhen | 2019–2023</p>
+                
+                <p>Exchange Program<br>
+                The University of North Carolina at Chapel Hill | Spring 2023<br>
+                Focus: Computer Science and Psychology</p>
+            </div>
+
+            <!-- Polaroid Wall -->
+            <div class="polaroid-wall">
+                <div class="polaroid" style="--rotation: -3deg">
+                    <div class="polaroid-content">
+                        <strong>Writing</strong><br>
+                        Hoarding ideas like a squirrel saves nuts
+                    </div>
+                </div>
+                <div class="polaroid" style="--rotation: 2deg">
+                    <div class="polaroid-content">
+                        <strong>Painting</strong><br>
+                        Making colors dance until they behave
+                    </div>
+                </div>
+                <div class="polaroid" style="--rotation: -2deg">
+                    <div class="polaroid-content">
+                        <strong>Programming</strong><br>
+                        "I build my ideas"
+                    </div>
+                </div>
+                <div class="polaroid" style="--rotation: 3deg">
+                    <div class="polaroid-content">
+                        <strong>Psychology</strong><br>
+                        Because humans are fascinatingly weird
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create ambient particles
+        const particles = document.querySelector('.particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.width = Math.random() * 3 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particles.appendChild(particle);
+        }
+
+        // Pokemon card interaction
+        const card = document.querySelector('.pokemon-card');
+        
+        if (window.matchMedia('(pointer: fine)').matches) {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                
+                card.style.transform = `
+                    rotateY(${x * 20}deg)
+                    rotateX(${-y * 20}deg)
+                    translateZ(50px)
+                `;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateZ(50px)';
+            });
+        }
+    </script>
+</body>
+</html>

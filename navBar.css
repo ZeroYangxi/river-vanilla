@@ -1,0 +1,107 @@
+/* Header and Navigation */
+.header {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 2vh;
+  /* padding-bottom: 1vh; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.navBar {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1;
+  /* margin-bottom: 1rem; */
+}
+
+.navBar a {
+  font-size: clamp(1.125rem, 2vw, 1.8rem);
+  font-weight: 300;
+  font-style: italic;
+  color: white;
+  text-shadow: 2px 3px 2px rgba(42, 255, 255, 0.5);
+  text-decoration: none;
+  margin-left: 2.5rem;
+  margin-right: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.navBar a:hover {
+  color: #2affff;
+  text-shadow: 3px 3px 4px #2affff;
+}
+
+.icons {
+  position: absolute;
+  right: 3%;
+  cursor: pointer;
+}
+
+.icons img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Responsive Design */
+@media (min-width: 992px) {
+  .icons {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .icons {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  #menuIcon {
+    display: block;
+  }
+
+  #closeIcon {
+    display: none;
+  }
+
+  #closeIcon.active {
+    display: block;
+  }
+
+  #menuIcon.active {
+    display: none;
+  }
+
+  .navBar {
+    display: none;
+  }
+
+  .navBar.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem 0;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  }
+
+  .navBar.active a {
+    display: block;
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+    margin: 0.5rem 0;
+    padding: 0.25rem 0;
+    width: 100%;
+    text-align: center;
+  }
+}
