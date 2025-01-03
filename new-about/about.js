@@ -2,15 +2,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // Dialog Content
   const dialogContent = [
     {
-      text: "Hi, I'm River 🌊 – an Information Science Master's student at Cornell, passionate about UX Research & Product Design. Psychology BS from CUHKSZ sparked my fascination with human behavior! 🧠 (1/3)",
+      text: "Fun fact: Right hand writes, left hand draws ✍️🎨\u00A0 (4/6)",
       delay: 0,
     },
     {
-      text: "I'm a Psychology & UX content creator on RED making concepts accessible to 3k+ followers with 31k+ likes & collects! 🎨 (2/3)",
+      text: "Proud Pokémon TCG player - Gengar & Shellder forever! 👻🐚\u00A0 (5/6)",
       delay: 100,
     },
     {
-      text: "Beyond Screens: Building with HTML/CSS/JavaScript/TypeScript, exploring data with Python. Scroll down to say hi! ✨ (3/3)",
+      text: "Find me in NY, crafting user experiences ✨🎯\u00A0 (6/6)",
       delay: 100,
     },
   ];
@@ -29,7 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function addMessage(text) {
     const messageDiv = document.createElement("div");
     messageDiv.className = "chat-message";
-    messageDiv.innerHTML = `<p>${text}</p>`;
+    messageDiv.textContent = text;
+    // messageDiv.innerHTML = `<p>${text}</p>`;
     chatHistory.appendChild(messageDiv);
     chatHistory.scrollTop = chatHistory.scrollHeight;
   }

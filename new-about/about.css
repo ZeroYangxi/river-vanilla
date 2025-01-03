@@ -512,10 +512,18 @@ body {
   position: relative;
 }
 
+.title {
+  text-align: center;
+  color: #2affff;
+  margin-top: 1.5rem;
+  font-size: 1.7rem;
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(42, 255, 255, 0.5);
+}
+
 .card-prompt {
   text-align: center;
   color: #2affff;
-  margin-top: 1rem;
   font-size: 1.2rem;
   text-shadow: 0 0 10px rgba(42, 255, 255, 0.5);
 }
@@ -533,6 +541,50 @@ body {
   max-height: 600px;
   overflow-y: auto;
   backdrop-filter: blur(10px);
+}
+
+.default-message {
+  opacity: 0;
+  color: white !important;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+  text-shadow: 1px 1px 2px rgba(42, 255, 255, 0.2);
+  will-change: transform, opacity;
+  animation-fill-mode: forwards;
+}
+
+/* Stagger the animations for each message */
+.default-message:nth-child(1) {
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.default-message:nth-child(2) {
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
+
+.default-message:nth-child(3) {
+  animation-delay: 1.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add a subtle hover effect */
+.default-message:hover {
+  color: white;
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
 }
 
 .chat-message {
@@ -608,21 +660,35 @@ body {
   .layout-container {
     flex-direction: column;
     margin-top: 2rem;
+    gap: 3rem; /* Increase gap between card and chat sections */
   }
 
   .card-container {
     width: 100%;
     max-width: 300px;
     margin: 0 auto;
+    /* margin-bottom: 1rem;  Add space after card container */
   }
 
-  .card-prompt {
-    margin-top: -2.5rem;
+  .title {
+    position: absolute; /* Position absolutely */
+    color: whitesmoke;
+    bottom: -9rem; /* Move below the card */
+    margin-top: 1.5rem;
+    margin-bottom: 3rem; /* Increase bottom margin on mobile */
   }
 
   .chat-container {
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 2rem; /* Add top margin */
+    padding-top: 2rem; /* Add padding */
+    /* margin-top: 1rem; */
+  }
+
+  .card-prompt {
+    font-style: italic;
+    margin-top: 1rem; /* Add top margin */
+    margin-bottom: 1rem; /* Increase bottom margin on mobile */
   }
 
   .chat-history {
