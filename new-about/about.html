@@ -9,18 +9,14 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="about.css" />
-    <link rel="stylesheet" href="../navBar.css" />
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="/navBar.css" />
+    <script src="../navBar.js"></script>
   </head>
   <body>
     <header class="header">
       <label for="menu" class="icons">
-        <img
-          id="menuIcon"
-          src="../assets/menu-icon-white.png"
-          alt="menu-icon"
-        />
-        <img id="closeIcon" src="../assets/x-icon-white.png" alt="close-icon" />
+        <img id="menuIcon" src="./assets/menu-icon-white.png" alt="menu-icon" />
+        <img id="closeIcon" src="./assets/x-icon-white.png" alt="close-icon" />
       </label>
       <nav class="navBar">
         <a href="../index.html">Craft</a>
@@ -28,11 +24,9 @@
         <a href="about.html">Meet River</a>
       </nav>
     </header>
-
     <div class="layout-container">
-      <!-- Pokemon card section -->
       <div class="card-container">
-        <div class="pokemon-card" id="interactiveCard">
+        <div class="pokemon-card">
           <div class="holographic-border"></div>
           <div class="card-frame">
             <div class="profile-container">
@@ -42,113 +36,74 @@
                 class="profile-image"
               />
             </div>
+
+            <!-- <div class="move-container">
+              <div class="water-symbol"></div>
+              <span class="move-name"> Research, design, code, and have serious fun!</span>
+              <span class="move-power">200</span>
+            </div> 
+            <div class="description">
+            </div>-->
           </div>
           <div class="energy-overlay"></div>
           <div class="shine-effect"></div>
           <div class="rainbow-shine"></div>
         </div>
-        <div class="title"><p>UX Researcher & Product Designer</p></div>
       </div>
 
-      <!-- Chat section -->
-      <div class="chat-container">
-        <div class="card-prompt">
-          A wild River appears! <br />
-          Three hidden stories await... 💫
+      <div class="education-section">
+        <div class="accordion-section">
+            <button class="accordion-button">
+                About River
+                <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+                <p>Life is an art—a liquid craft in progress. I blend psychology with technology, finding serious fun along the way.</p>
+            </div>
         </div>
-        <div class="chat-history" id="chatHistory">
-          <div class="chat-message default-message">
-            <p>
-              Hi, I'm River 🌊 – Master's student @ Cornell Information Science,
-              Psychology BS @ CUHKSZ. Human behavior enthusiast! 🧠 (1/6)
-            </p>
-          </div>
-          <div class="chat-message default-message">
-            <p>
-              I'm a Psychology & UX content creator on RED making concepts
-              accessible to 3.5k+ followers with 31k+ likes & collects! 🎨 (2/6)
-            </p>
-          </div>
-          <div class="chat-message default-message">
-            <p>
-              Beyond Screens: Coding in HTML/CSS/JS/TS, data in Python. Three
-              Easter eggs await below... Curious? ✨ (3/6)
-            </p>
-          </div>
-          <!-- Chat messages will be added here dynamically -->
+    
+        <div class="accordion-section">
+            <button class="accordion-button">
+                What Intrigues Me
+                <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+                <p style="font-size: clamp(1rem, 2vw, 1.2rem); line-height: 1.8">
+                    <strong>Writing.</strong> Hoarding ideas like a squirrel saves nuts—mostly for tweets I'll never post.<br />
+                    <strong>Painting.</strong> Making colors dance until they behave.<br />
+                    <strong>Programming.</strong> "I build my ideas"—stolen from Jordan Singer.<br />
+                    <strong>Pokémon TCG.</strong> That shiny EX card up there? Worth it.<br />
+                    <strong>Podcast.</strong> Finding excuses to listen to <i>Hidden Brain</i> while adulting.<br />
+                    <strong>Psychology.</strong> Because humans are fascinatingly weird.<br />
+                </p>
+            </div>
         </div>
-      </div>
+    
+        <div class="accordion-section">
+            <button class="accordion-button">
+                Education
+                <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="font-size: clamp(1.2rem, 2.3vw, 1.2rem);">Master of Information Science</h3>
+                    <p>Cornell University | 2023–2025</p>
+                    <p>Specialization: Interactive Technology</p>
+                </div>
+    
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="font-size: clamp(1.2rem, 2.3vw, 1.2rem);">Bachelor of Science in Psychology</h3>
+                    <p>The Chinese University of Hong Kong, Shenzhen | 2019–2023</p>
+                </div>
+    
+                <div>
+                    <h3 style="font-size: clamp(1.2rem, 2.3vw, 1.2rem);">Exchange Program</h3>
+                    <p>The University of North Carolina at Chapel Hill | Spring 2023</p>
+                    <p>Focus: Computer Science and Psychology</p>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <!-- Shooting Star Connect Button -->
-    <div class="connect-star-container">
-      <button class="connect-star">
-        <div class="star-trail"></div>
-        <div class="star">✦</div>
-        <span class="connect-text">Let's Connect!</span>
-      </button>
-
-      <div class="connect-popup">
-        <a
-          href="mailto:riveryangxi@gmail.com"
-          target="_blank"
-          class="connect-link"
-        >
-          <span>✉️</span>
-          <span>Email</span>
-        </a>
-        <a
-          href="https://github.com/ZeroYangxi"
-          target="_blank"
-          class="connect-link"
-        >
-          <span>⚡</span>
-          <span>GitHub</span>
-        </a>
-        <a
-          href="https://www.linkedin.com/in/riveryu/"
-          target="_blank"
-          class="connect-link"
-        >
-          <span>💫</span>
-          <span>LinkedIn</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- Connect section -->
-    <div class="connect-section">
-      <h2>Let's Connect!</h2>
-      <div class="social-links">
-        <a
-          href="mailto:riveryangxi@gmail.com"
-          target="_blank"
-          class="social-link email"
-        >
-          <span>Email</span>
-        </a>
-        <a
-          href="https://github.com/ZeroYangxi"
-          target="_blank"
-          class="social-link github"
-        >
-          <span>GitHub</span>
-        </a>
-        <a
-          href="https://www.linkedin.com/in/riveryu/"
-          target="_blank"
-          class="social-link linkedin"
-        >
-          <span>LinkedIn</span>
-        </a>
-      </div>
-    </div>
-
-    <script src="../navBar.js"></script>
     <script src="about.js"></script>
   </body>
-  <footer class="footer">
-    © 2024 River Yu. All Rights Reserved. Designed & Developed with Matcha
-    Lattes (no sugar, no ice) alongside Claude 3.5 Sonnet.
-  </footer>
 </html>
