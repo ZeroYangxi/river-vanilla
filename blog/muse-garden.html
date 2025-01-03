@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muse Garden - River's Creative Space</title>
+    <link
+      href="https://fonts.font.im/css?family=Cormorant+Garamond"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/cursor/cursor-effect.css" />
+    <link rel="stylesheet" href="../navBar.css" />
+    <script src="/assets/cursor/cursor-effect.js" defer></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      body {
+        background: black;
+        color: white;
+        min-height: 100vh;
+      }
+
+      .footer {
+        font-size: 1em;
+        font-weight: 600;
+        color: white;
+        font-style: italic;
+        text-align: center;
+        margin-bottom: 2vh;
+        margin-top: 4vh;
+      }
+
+      .header {
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding-top: 2vh;
+        padding-bottom: 1vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+      }
+
+      .main-container {
+        max-width: 1400px;
+        margin: 120px auto 0;
+        padding: 0 4vw;
+      }
+
+      .title-section {
+        margin-bottom: 100px;
+        overflow: hidden;
+      }
+
+      .main-title {
+        font-size: clamp(4rem, 12vw, 15rem);
+        font-weight: 300;
+        line-height: 0.9;
+        transform: translateY(100%);
+        animation: slideUp 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      .subtitle {
+        font-size: clamp(1rem, 2vw, 1.5rem);
+        color: #2affff;
+        margin-top: 20px;
+        opacity: 0;
+        animation: fadeIn 1s ease forwards 0.8s;
+      }
+
+      .filter-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 4rem;
+        opacity: 0;
+        animation: fadeIn 1s ease forwards 1s;
+      }
+
+      .filter-tab {
+        color: white;
+        background: none;
+        border: none;
+        font-size: clamp(1rem, 1.5vw, 1.2rem);
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      .filter-tab:hover {
+        color: #2affff;
+      }
+
+      .filter-tab.active {
+        color: #2affff;
+      }
+
+      .filter-tab.active::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: #2affff;
+        animation: growLine 0.3s ease forwards;
+      }
+
+      .content-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 40px;
+        opacity: 0;
+        animation: fadeIn 1s ease forwards 1.2s;
+      }
+
+      .grid-item {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(42, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        color: white;
+      }
+
+      /* Handle visited state */
+      .grid-item:visited {
+        color: white;
+      }
+
+      /* Handle active state */
+      .grid-item:active {
+        color: white;
+        transform: scale(0.98);
+      }
+
+      /* Remove default link outline */
+      .grid-item:focus {
+        outline: none;
+        border-color: rgba(42, 255, 255, 0.3);
+      }
+
+      .grid-item:hover {
+        transform: translateY(-5px);
+        background: rgba(42, 255, 255, 0.05);
+        border-color: rgba(42, 255, 255, 0.2);
+      }
+
+      .grid-item.digital {
+        grid-row: span 2;
+      }
+
+      .grid-item.visual {
+        height: 400px; /* or whatever height you want */
+      }
+
+      .grid-item.visual img {
+        width: 100%;
+        height: 60%; /* image takes up top 70% */
+        object-fit: cover;
+      }
+
+      /* Text will naturally flow below the image */
+
+      .grid-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center; /* You can adjust this to focus on different parts */
+        transition: transform 0.3s ease;
+      }
+
+      .grid-item:hover img {
+        transform: scale(1.05);
+      }
+
+      .item-content {
+        padding: 30px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 40px;
+      }
+
+      .item-date {
+        font-size: 0.9rem;
+        color: #2affff;
+        font-style: italic;
+      }
+
+      .item-title {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 300;
+        line-height: 1.2;
+        margin: 15px 0;
+        text-shadow: 2px 2px 3px rgba(42, 255, 255, 0.3);
+      }
+
+      .item-excerpt {
+        font-size: 1rem;
+        color: #cccccc;
+        line-height: 1.6;
+      }
+
+      @keyframes slideUp {
+        to {
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes growLine {
+        from {
+          transform: scaleX(0);
+        }
+        to {
+          transform: scaleX(1);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .main-container {
+          margin-top: 80px;
+        }
+
+        .title-section {
+          margin-bottom: 60px;
+        }
+
+        .filter-tabs {
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
+
+        .content-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .grid-item {
+          min-height: 300px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="custom-cursor"></div>
+    <header class="header">
+      <label for="menu" class="icons">
+        <img
+          id="menuIcon"
+          src="../assets/menu-icon-white.png"
+          alt="menu-icon"
+        />
+        <img id="closeIcon" src="../assets/x-icon-white.png" alt="close-icon" />
+      </label>
+      <nav class="navBar">
+        <a href="../index.html">Craft</a>
+        <a href="/blog/muse-garden.html">Muse</a>
+        <a href="../new-about/about.html">Meet River</a>
+      </nav>
+    </header>
+
+    <main class="main-container">
+      <section class="title-section">
+        <h1 class="main-title">MUSE<br />GARDEN</h1>
+        <p class="subtitle">
+          Where River's imagination blooms through pixels, paint, and prose.
+        </p>
+      </section>
+
+      <div class="filter-tabs">
+        <button class="filter-tab active">All</button>
+        <button class="filter-tab">Blog</button>
+        <button class="filter-tab">Art</button>
+        <button class="filter-tab">Code</button>
+      </div>
+
+      <div class="content-grid">
+        <a
+          href="/blog/posts/转码202402.html"
+          class="grid-item blog"
+          data-category="neural"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="item-content">
+            <span class="item-date">FEB, 2024</span>
+            <h2 class="item-title">
+              Transition to Tech: A Field Guide to Mental Resilience
+            </h2>
+            <p class="item-excerpt">
+              Practical wisdom for navigating the transition to tech while
+              staying grounded in what matters most.
+              轉碼是爲了更好地生活：調整心態的實操方法。（Eng/繁中）
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="https://game-hub-one-taupe.vercel.app/"
+          class="grid-item digital"
+          data-category="digital"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="item-content">
+            <span class="item-date">Frontend Development</span>
+            <h2 class="item-title">GameHub: Game Discovery Platform</h2>
+            <p class="item-excerpt">
+              A responsive game discovery platform built with React and
+              TypeScript, featuring real-time search and filtering powered by
+              RAWG API.
+            </p>
+          </div>
+        </a>
+        <!-- Digital Garden Example - ASCII Video -->
+        <a
+          href="https://video-to-ascii.vercel.app/"
+          class="grid-item digital"
+          data-category="digital"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="item-content">
+            <span class="item-date">Interactive Project</span>
+            <h2 class="item-title">ASCII Video Transform</h2>
+            <p class="item-excerpt">
+              Real-time video to ASCII art converter. Turn your webcam feed into
+              a dynamic character-based visualization.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="https://casecobra-flame.vercel.app/"
+          class="grid-item digital"
+          data-category="digital"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="item-content">
+            <span class="item-date">Development & UX Research</span>
+            <h2 class="item-title">CaseCobra: E-commerce Experience Study</h2>
+            <p class="item-excerpt">
+              Explored e-commerce UX patterns through hands-on development with
+              Next.js and React, bridging research insights with technical
+              implementation.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="https://hmss-swart.vercel.app/about/about.html"
+          class="grid-item digital"
+          data-category="digital"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="item-content">
+            <span class="item-date">Hackathon Project</span>
+            <h2 class="item-title">HVAC Monitoring & Surveillance System</h2>
+            <p class="item-excerpt">
+              A breakthrough healthcare innovation tackling infection control
+              through smart HVAC monitoring, built in 24 hours to transform
+              patient safety.
+            </p>
+          </div>
+        </a>
+
+        <div class="grid-item visual" data-category="visual">
+          <img
+            src="./img/Shellder.JPG"
+            alt="Shellder Pokemon oil pastel drawing"
+          />
+          <div class="item-content">
+            <span class="item-date"
+              >First Oil Pastel Doodling (Without prior Sketch Training!)</span
+            >
+            <h2 class="item-title">Sea Shellder 海舌贝</h2>
+          </div>
+        </div>
+
+        <!-- Neural Ink Blog Posts -->
+        <a
+          href="/blog/posts/大脑可塑性202412.html"
+          class="grid-item blog"
+          data-category="neural"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="item-content">
+            <span class="item-date">DEC, 2024</span>
+            <h2 class="item-title">Brain Plasticity at Any Age</h2>
+            <p class="item-excerpt">
+              Science-backed techniques to harness your brain's natural ability
+              to be focused and change. （Eng/简中,
+              不论18岁80岁，利用大脑可塑性的方法）
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="https://image-particles.vercel.app/"
+          class="grid-item digital"
+          data-category="digital visual"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="item-content">
+            <span class="item-date">Interactive Design</span>
+            <h2 class="item-title">Image Particle Effect</h2>
+            <p class="item-excerpt">
+              A playful web experiment transforming images into interactive
+              particle systems, featuring fluid mouse-based interactions and
+              dynamic animations.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="/blog/posts/聪明执念202412.html"
+          class="grid-item blog"
+          data-category="neural"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="item-content">
+            <span class="item-date">DEC, 2024</span>
+            <h2 class="item-title">Still hung up on being 'smart'?</h2>
+            <p class="item-excerpt">
+              Genius bows to courage: intelligence surrenders where
+              vulnerability begins to sing.（Eng/简中,
+              放不下"我很聪明"的执念？）
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="/blog/posts/允许错轨202311.html"
+          class="grid-item blog"
+          data-category="neural"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="item-content">
+            <span class="item-date">NOV, 2023</span>
+            <h2 class="item-title">Learning to Derail 允许错轨</h2>
+            <p class="item-excerpt">
+              How imperfection becomes the pathway to growth. （Eng/简中）
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="https://yangxi.mmm.page/"
+          class="grid-item visual"
+          data-category="digital visual"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <!-- <img src="/api/placeholder/400/300" alt="Artwork preview" /> -->
+          <img src="./img/FufuWorld.png" alt="Artwork preview" />
+          <div class="item-content">
+            <span class="item-date">Digital Art</span>
+            <h2 class="item-title">Fufu's World</h2>
+          </div>
+        </a>
+
+        <a
+          href="https://game-hub-one-taupe.vercel.app/"
+          class="grid-item digital"
+          data-category="digital visual"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="item-content">
+            <span class="item-date">Creative Coding</span>
+            <h2 class="item-title">Fibonacci Flower: Algorithmic Art</h2>
+            <p class="item-excerpt">
+              A generative art experiment combining mathematical principles with
+              creative coding to produce dynamic, algorithmic floral patterns.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="/blog/posts/夏日梦呓2023.html"
+          class="grid-item blog"
+          data-category="neural"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="item-content">
+            <span class="item-date">JUNE, 2023</span>
+            <h2 class="item-title">Fragments of Summer, 2023 / 夏日梦呓</h2>
+            <p class="item-excerpt">
+              Intimate whispers of personal moments and reflections, written in
+              Simplified Chinese. I'm sharing them as they are.
+              个人化的碎片呓语，简体中文。
+            </p>
+          </div>
+        </a>
+
+        <!-- <div class="grid-item visual" data-category="visual">
+          <img
+            src="./img/第一次油画牡丹.jpg"
+            alt="Mushroom watercolor doodling"
+          />
+          <div class="item-content">
+            <span class="item-date"
+              >First Oil Painting (Without Sketch Training!)</span
+            >
+             <h2 class="item-title">A Flower for Mom 送给妈妈的花</h2>
+          </div>
+        </div> -->
+
+        <!-- <div class="grid-item visual" data-category="visual">
+          <img src="./img/水彩蘑菇.jpg" alt="Mushroom watercolor doodling" />
+          <div class="item-content">
+            <span class="item-date">Watercolor Wanderings</span>
+            <h2 class="item-title">Dreamy Mushroom (Look, Don't Eat! 🍄)</h2>
+          </div>
+        </div> -->
+      </div>
+    </main>
+
+    <script>
+      // Simple filter functionality
+      const tabs = document.querySelectorAll(".filter-tab");
+      const items = document.querySelectorAll(".grid-item");
+
+      // Add data attributes to tabs
+      tabs[0].dataset.filter = "all";
+      tabs[1].dataset.filter = "neural";
+      tabs[2].dataset.filter = "visual";
+      tabs[3].dataset.filter = "digital";
+
+      // Filter functionality
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          // Update active tab
+          tabs.forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
+
+          // Filter items
+          const filter = tab.dataset.filter;
+          items.forEach((item) => {
+            if (filter === "all") {
+              item.style.display = "block";
+              item.style.animation = "fadeIn 0.5s ease forwards";
+            } else {
+              if (item.dataset.category.includes(filter)) {
+                item.style.display = "block";
+                item.style.animation = "fadeIn 0.5s ease forwards";
+              } else {
+                item.style.display = "none";
+              }
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+  <footer class="footer">
+    © 2024 River Yu. All Rights Reserved. Designed & Developed with Matcha
+    Lattes (no sugar, no ice) alongside Claude 3.5 Sonnet.
+  </footer>
+</html>
