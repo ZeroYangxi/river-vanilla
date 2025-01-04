@@ -175,6 +175,7 @@ body {
 }
 
 .project-item:visited {
+  color: white;
 }
 
 .project-item img {
