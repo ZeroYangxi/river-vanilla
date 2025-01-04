@@ -266,4 +266,8 @@ body {
   .project-item {
     font-size: clamp(1rem, 3vh, 1.5rem);
   }
+
+  .project-item:visited {
+    color: white;
+  }
 }
