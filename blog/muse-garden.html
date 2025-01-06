@@ -63,6 +63,16 @@
         animation: fadeIn 1s ease forwards 0.8s;
       }
 
+      .subtitle a, .subtitle a:visited {
+  color: #2affff !important;
+  text-decoration: underline;
+  transition: all 0.3s ease;
+}
+
+.subtitle a:hover {
+  text-shadow: 0 0 8px rgba(42, 255, 255, 0.5);
+}
+
       .filter-tabs {
         display: flex;
         justify-content: center;
@@ -264,17 +274,45 @@
       </nav>
     </header>
 
+    <!-- <div
+      style="
+        background: rgba(42, 255, 255, 0.05);
+        color: white;
+        text-align: center;
+        padding: 8px 20px;
+        font-size: 0.9rem;
+        border-bottom: 1px solid rgba(42, 255, 255, 0.1);
+        margin-top: 60px;
+      "
+    >
+      ✧ Personal Creative Space ✧ For Professional Work, Visit
+      <a href="../index.html" style="color: #2affff; text-decoration: none"
+        >Craft</a
+      >
+    </div> -->
+
     <main class="main-container">
       <section class="title-section">
         <h1 class="main-title">MUSE<br />GARDEN</h1>
         <p class="subtitle">
-          Where River's imagination blooms through pixels, paint, and prose.
+          <div style="font-size: 1.2em;  opacity: 0.9">
+            ✧ Personal creative space where River's imagination blooms through code, paint, and prose ✧ 
+            <div style="margin-top: 2px;">
+            For Professional Work, Visit 
+            <a href="../index.html" style="
+              color: #2affff; 
+              text-decoration: underline; 
+              padding-bottom: 2px;
+              font-style: italic;
+              box-shadow: inset 0 -2px 0 #2affff;
+              transition: all 0.3s ease;">Craft</a>
+          </div>
         </p>
       </section>
 
       <div class="filter-tabs">
         <button class="filter-tab active">All</button>
-        <button class="filter-tab">Blog</button>
+        <button class="filter-tab">Ink</button>
         <button class="filter-tab">Art</button>
         <button class="filter-tab">Code</button>
       </div>
@@ -296,6 +334,24 @@
               Practical wisdom for navigating the transition to tech while
               staying grounded in what matters most.
               轉碼是爲了更好地生活：調整心態的實操方法。（Eng/繁中）
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="/blog/posts/诗2023.html"
+          class="grid-item blog"
+          data-category="neural"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="item-content">
+            <span class="item-date">Verses</span>
+            <h2 class="item-title">
+               诗们，好几首 Poems, and then some
+            </h2>
+            <p class="item-excerpt">
+              A collection of some twenty intimate verses written in Simplified Chinese in Spring 2023, exploring the physicality of writing, identity, and creativity through imagery of nature and everyday moments.
             </p>
           </div>
         </a>
@@ -473,7 +529,7 @@
         <a
           href="https://fibonacci-flower.vercel.app/"
           class="grid-item digital"
-          data-category="digital visual"
+          data-category="digital"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -567,7 +623,7 @@
     <script src="../navBar.js"></script>
   </body>
   <footer class="footer">
-    © 2024 River Yu. All Rights Reserved. Designed & Developed with Matcha
+    © 2024 River Yu. All Rights Reserved.<br />Designed & Developed with Matcha
     Lattes (no sugar, no ice) alongside Claude 3.5 Sonnet.
   </footer>
 </html>
