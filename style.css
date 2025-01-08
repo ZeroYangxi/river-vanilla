@@ -5,6 +5,14 @@
   font-family: "Cormorant Garamond", serif;
 }
 
+/* Section title */
+h2 {
+  margin: 1rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* Canvas and Overlay */
 .canvas-container {
   position: relative;
   width: 100%;
@@ -21,27 +29,39 @@
   object-fit: cover;
 }
 
+/* Overlay Container */
 .overlay {
   position: absolute;
   bottom: 35vh;
-  left: 55%; /* Shift right from center */
-  transform: translateX(-40%); /* This keeps the text itself centered */
-  width: 100%;
+  right: 10%; /* Changed from left to right positioning */
+  transform: none; /* Remove the translateX since we're using right alignment */
+  width: auto; /* Changed from 100% to auto to prevent full-width */
   color: white;
-  text-shadow: 2px 2px 3px white;
-  font-size: 24px;
-  text-align: center;
+  text-align: right; /* Changed from center to right */
   z-index: 1;
 }
 
-.overlay .secondary-text {
-  font-size: 20px;
-  text-shadow: 2px 1px 3px rgba(255, 255, 255, 0.9);
+/* Prevent text wrapping for all paragraphs in overlay */
+.overlay p {
+  white-space: nowrap;
+}
+
+/* Primary Text */
+.overlay p:first-child {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  text-shadow: 2px 2px 3px white;
+  margin-bottom: 0.5rem;
+}
+
+/* Secondary Text */
+.overlay p:last-child {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  text-shadow: 2px 1px 3px rgba(255, 255, 255, 0.3);
 }
 
 .category {
   position: relative;
-  position: flex;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
@@ -59,9 +79,8 @@ body {
   background: black;
 }
 
+/* Header and Navigation */
 .header {
-  /* background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(50px); */
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -77,8 +96,8 @@ body {
 
 .navBar {
   display: flex;
-  flex: 1; /* Allow it to take remaining space */
-  justify-content: space-around; /* Distribute links evenly */
+  flex: 1;
+  justify-content: space-around;
   align-items: center;
   z-index: 1;
 }
@@ -91,15 +110,15 @@ body {
 }
 
 .navBar a {
-  font-size: clamp(1.2rem, 1.8vw, 1.6rem); /* 18px to 28.8px */
+  font-size: clamp(1.125rem, 2vw, 1.8rem);
   font-weight: 300;
-  font-style: italic;
+  /* font-style: italic; */
   color: white;
-  text-shadow: 2px 3px 2px #2affff7e;
-  /* color: #2affff; */
+  text-shadow: 2px 3px 2px rgba(42, 255, 255, 0.5);
   text-decoration: none;
   margin-left: 2.5rem;
   margin-right: 0.5rem;
+  transition: all 0.3s ease;
 }
 
 .navBar a:hover {
@@ -110,53 +129,130 @@ body {
 .icons {
   position: absolute;
   right: 3%;
-  size: 2.5rem;
   cursor: pointer;
 }
 
-/* Projects Page */
+.icons img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Projects Section */
 #projects {
-  /* max-width: 1500px; */
-  margin: 0 auto; /* 居中显示 */
-  /* background-image: url("monet.webp"); */
-  background-size: cover; /* 使背景图像覆盖整个元素 */
-  background-position: center; /* 居中显示背景图像 */
-  color: white; /* 设置文本颜色为白色 */
-  padding-left: 4vw; /* 添加内边距，以确保内容不会太靠近边缘 */
+  margin: 0 auto;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding-left: 4vw;
   padding-right: 4vw;
 }
 
-.project-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; /* 项目之间的间距 */
-  justify-content: center; /* 在主轴上居中对齐项目 */
+/* Add this new CSS */
+#projects {
+  padding: 4rem 2rem;
+  background: black;
+  color: white;
 }
 
-/* 单个项目项的样式 */
-.project-item {
-  font-size: 4vh;
-  flex: 1 1 180px; /* 让项目项能够伸缩，基础宽度为180px */
-  display: flex;
-  flex-direction: column; /* 使图片和文本垂直排列 */
-  align-items: start; /* 在交叉轴上居中对齐内容 */
-  justify-content: flex-start;
-  text-align: left; /* 文本居中 */
-  margin-bottom: 40px;
-  padding-left: 1vw;
-  text-shadow: 1px 1px 2px #2affff;
+@keyframes titleFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-250px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.project-item:hover {
-  background-color: #2affff;
-  color: black;
-  /* text-shadow: 1px 1px 3px #0000007e; */
+#projects h2 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 300;
+  color: white;
+  animation: titleFadeIn 4s ease-out forwards;
+  text-shadow: 2px 3px 2px rgba(42, 255, 255, 0.5);
+}
+
+.project-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.project-category {
+  margin-bottom: 4rem;
+}
+
+/* h3 are "UX Research & Design" "Development" */
+.project-category h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: white;
+  font-weight: 300;
+}
+
+.project-card {
+  display: block;
+  background: rgba(42, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  background: rgba(42, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.project-content h4 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+  color: #2affff;
+}
+
+.project-content p {
+  font-size: 1.1rem;
+  color: #ffffff99;
+  margin-bottom: 1rem;
+}
+
+.project-link {
+  color: #2affff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .project-link {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  #projects {
+    padding: 2rem 1rem;
+  }
+
+  .project-card {
+    padding: 1.5rem;
+  }
+
+  .project-content h4 {
+    font-size: 1.2rem;
+  }
+}
+
+.project-item:visited {
+  color: white;
 }
 
 .project-item img {
-  width: 100%; /* 使图片宽度填满容器 */
-  max-width: 200px; /* 限制图片的最大宽度 */
-  height: auto; /* 保持图片的原始比例 */
+  width: 100%;
+  max-width: 200px;
+  height: auto;
 }
 
 .footer {
@@ -169,7 +265,7 @@ body {
   margin-top: 4vh;
 }
 
-/* Media Query */
+/* Responsive Design */
 @media (min-width: 992px) {
   .icons {
     display: none;
@@ -183,7 +279,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  /* menu bar icon换 */
   #menuIcon {
     display: block;
   }
@@ -204,26 +299,47 @@ body {
     display: none;
   }
 
-  /* 当屏幕尺寸较小时nav bar变成需要展开的 */
   .navBar.active {
     display: flex;
+    flex-direction: column;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    height: auto;
     padding: 1rem 0;
-    background: rgba(0, 0, 0, 0.9);
+    /* background: rgba(0, 0, 0, 0.5); */
     backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
   }
 
-  .navBar a {
+  .navBar.active a {
     display: block;
-    font-size: clamp(1.25rem, 4vw, 1.5rem); /* 20px to 24px */
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
     margin: 0.75rem 0;
     padding: 0.5rem 0;
     width: 100%;
-    margin: 1.5rem 1.5rem;
     text-align: center;
+  }
+
+  .overlay {
+    bottom: 40vh;
+    right: 5%;
+    line-height: 0.6em;
+  }
+
+  .overlay p:first-child {
+    font-size: clamp(1.1rem, 2.5vw, 1.2rem);
+  }
+  .overlay p:last-child {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    line-height: 1em;
+  }
+
+  .project-item {
+    font-size: clamp(1rem, 3vh, 1.5rem);
+  }
+
+  .project-item:visited {
+    color: white;
   }
 }

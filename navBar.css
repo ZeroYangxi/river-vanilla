@@ -25,7 +25,7 @@
 .navBar a {
   font-size: clamp(1.125rem, 2vw, 1.8rem);
   font-weight: 300;
-  font-style: italic;
+  /* font-style: italic; */
   color: white;
   text-shadow: 2px 3px 2px rgba(42, 255, 255, 0.5);
   text-decoration: none;
