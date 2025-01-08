@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       delay: 100,
     },
     {
-      text: "Find me in NY, crafting user experiences ✨🎯\u00A0 (6/6)",
+      text: "Plot twist: From counseling days to pixels & code - reimagining connections! 🤝✨ Say hi! (6/6)",
       delay: 100,
     },
   ];
